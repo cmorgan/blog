@@ -1,1 +1,1 @@
-Search.setIndex({objtypes:{},objects:{},terms:{thi:0,about:[1,2],post:[0,1],sitemap:1,"2ab":0,hello:2,chri:2,morgan:2,here:2,test:[0,1]},objnames:{},titles:["Test post","Sitemap","About"],filenames:["2014/01/03/test_post","master","pages/about"]})
+Search.setIndex({objects:{},filenames:["master","2014/01/03/test_post","pages/about"],titles:["Sitemap","Test post","About"],terms:{chri:2,sitemap:0,"2ab":1,test:[0,1],post:[0,1],thi:1,hello:2,morgan:2,about:[0,2],here:2},objnames:{},objtypes:{}})
