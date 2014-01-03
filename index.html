@@ -67,25 +67,54 @@
           </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
             <span>January 03, 2014</span>
         </div>
-        <div class="section" id="test-post">
-<h1><a href="2014/01/03/test_post.html">Test post</a></h1>
-<p>This is a test</p>
-<div class="formula">
-(<i>a</i> + <i>b</i>)<sup>2</sup> = <i>a</i><sup>2</sup> + 2<i>ab</i> + <i>b</i><sup>2</sup>
+        <div class="section" id="setting-up-matlab-contexts">
+<h1><a href="2014/01/03/setup_matlab.html">Setting up MATLAB contexts</a></h1>
+<p>If you are forced to use MATLAB (here’s a whole blog devoted to the topic of
+why not to use it <a class="reference external" href="http://abandonmatlab.wordpress.com">http://abandonmatlab.wordpress.com/</a>) the following advice
+maybe useful for easily managing your path and hence creating contexts of work.</p>
+<p>In cases where Administrator privileges are not held, the following config. is
+flexible.</p>
+<p>Define MATLAB’s <span class="docutils literal"><span class="pre">userpath</span></span> to be a user writeable directory. This is the initial
+directory MATLAB will parse.</p>
+<p>Within the <span class="docutils literal"><span class="pre">userpath</span></span> create <span class="docutils literal"><span class="pre">startup.m</span></span>:</p>
+<div class="highlight-matlab"><div class="highlight"><pre><span class="k">if</span> <span class="o">~</span><span class="n">isdeployed</span>
+    <span class="n">path</span><span class="p">(</span><span class="n">my_path</span><span class="p">)</span>
+    <span class="n">set_vars</span>
+</pre></div>
 </div>
+<p>Where <span class="docutils literal"><span class="pre">my_path</span></span> is a matlab file which sets the path like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">function</span> <span class="n">p</span> <span class="o">=</span> <span class="n">my_path</span>
+     <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="s">'/home/chris/matlab;'</span><span class="p">,</span> <span class="s">'/home/chris/important;'</span><span class="p">];</span>
+     <span class="n">cd</span><span class="p">(</span><span class="s">'/home/chris/matlab'</span><span class="p">);</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+<p>So we set the path and cd to a relevant directory. Also in the userpath folder,
+one can keep many files like <span class="docutils literal"><span class="pre">my_path.m</span></span>, which define different contexts to
+work in, making changing contexts as easy as:</p>
+<div class="highlight-matlab"><div class="highlight"><pre><span class="n">path</span><span class="p">(</span><span class="n">my_other_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Whithin each context <span class="docutils literal"><span class="pre">path</span></span> file if you also call the <span class="docutils literal"><span class="pre">set_vars</span></span> script,
+this allows <span class="docutils literal"><span class="pre">set_vars</span></span> to contain useful variables e.g. paths to output
+directories and the like.</p>
 </div>
         <div class="postmeta">
         <div class="author">
             <span>Posted by Chris Morgan</span>
         </div>
         
-        
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/matlab.html">matlab</a></span>
+        </div>
         </div><div class="archive_link">
         <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
     </div></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
-            <a href="2014/01/03/test_post.html">Test post</a>
+            <a href="2014/01/03/setup_matlab.html">Setting up MATLAB contexts</a>
         </li></ul>
 </div>
 </section></aside></div> <!-- #main --></div> <!-- #main-container -->
