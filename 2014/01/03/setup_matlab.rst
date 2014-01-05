@@ -1,7 +1,5 @@
-
 Setting up MATLAB contexts
 ==========================
-
 
 If you are forced to use MATLAB (here's a whole blog devoted to the topic of
 why not to use it http://abandonmatlab.wordpress.com/) the following advice
@@ -45,5 +43,5 @@ directories and the like.
 
 .. author:: default
 .. categories:: none
-.. tags:: matlab
+.. tags:: matlab, tools
 .. comments::

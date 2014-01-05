@@ -1,5 +1,5 @@
-Being producitve with IPython notebooks
-=======================================
+Being even more productive with IPython notebooks
+=================================================
 
 IPython notebooks are an awesome tool for exploring data. Currently there are a
 few issues with the software which the community are working through.
