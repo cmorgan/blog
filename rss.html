@@ -5,8 +5,64 @@
         <link>http://127.0.0.1/</link>
         <description>Notes and ramblings on hacking and finance</description>
         <language>en-us</language>
-        <pubDate>Sun, 05 Jan 2014 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 13 Jan 2014 00:00:00 +0000</pubDate>
         
+        <item>
+            <link>http://127.0.0.1/2014/01/13/remember_vim_folding.html</link>
+            <guid>http://127.0.0.1/2014/01/13/remember_vim_folding.html</guid>
+            <title><![CDATA[Remember Vim folding]]></title>
+            <description><![CDATA[<div class="section" id="remember-vim-folding">
+<h1>Remember Vim folding</h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%"/>
+<col width="89%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Operation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>zO</td>
+<td>Open all folds recursivley</td>
+</tr>
+<tr class="row-odd"><td>zo</td>
+<td>Open one fold</td>
+</tr>
+<tr class="row-even"><td>zc</td>
+<td>Close one fold</td>
+</tr>
+<tr class="row-odd"><td>zC</td>
+<td>Close all folds recursivley</td>
+</tr>
+<tr class="row-even"><td>za</td>
+<td>Toggle fold</td>
+</tr>
+<tr class="row-odd"><td>zA</td>
+<td>Toggle fold recursivley</td>
+</tr>
+<tr class="row-even"><td>zR</td>
+<td>Open all folds</td>
+</tr>
+<tr class="row-odd"><td>zM</td>
+<td>Close all folds</td>
+</tr>
+</tbody>
+</table>
+<p>Then i set the following in .vimrc:</p>
+<div class="highlight-python"><pre>&quot; folding
+&quot; toggle open fold
+nnoremap f zA
+&quot; open all
+nnoremap F zR
+&quot; clos all
+nnoremap &lt;C-f&gt; zM</pre>
+</div>
+</div>]]></description>
+             <pubDate>Mon, 13 Jan 2014 00:00:00 +0000</pubDate>
+        </item>
+    
         <item>
             <link>http://127.0.0.1/2014/01/05/being_productive_with_ipython_notebooks.html</link>
             <guid>http://127.0.0.1/2014/01/05/being_productive_with_ipython_notebooks.html</guid>

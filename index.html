@@ -65,6 +65,64 @@
                 </li>
               </ul>
           </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
+            <span>January 13, 2014</span>
+        </div>
+        <div class="section" id="remember-vim-folding">
+<h1><a href="2014/01/13/remember_vim_folding.html">Remember Vim folding</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%"/>
+<col width="89%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Operation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>zO</td>
+<td>Open all folds recursivley</td>
+</tr>
+<tr class="row-odd"><td>zo</td>
+<td>Open one fold</td>
+</tr>
+<tr class="row-even"><td>zc</td>
+<td>Close one fold</td>
+</tr>
+<tr class="row-odd"><td>zC</td>
+<td>Close all folds recursivley</td>
+</tr>
+<tr class="row-even"><td>za</td>
+<td>Toggle fold</td>
+</tr>
+<tr class="row-odd"><td>zA</td>
+<td>Toggle fold recursivley</td>
+</tr>
+<tr class="row-even"><td>zR</td>
+<td>Open all folds</td>
+</tr>
+<tr class="row-odd"><td>zM</td>
+<td>Close all folds</td>
+</tr>
+</tbody>
+</table>
+<p>Then i set the following in .vimrc:</p>
+<div class="highlight-python"><pre>&quot; folding
+&quot; toggle open fold
+nnoremap f zA
+&quot; open all
+nnoremap F zR
+&quot; clos all
+nnoremap &lt;C-f&gt; zM</pre>
+</div>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Chris Morgan</span>
+        </div>
+        
+        
+        </div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>January 05, 2014</span>
         </div>
         <div class="section" id="being-even-more-productive-with-ipython-notebooks">
@@ -161,6 +219,8 @@ directories and the like.</p>
     </div></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2014/01/13/remember_vim_folding.html">Remember Vim folding</a>
+        </li><li>
             <a href="2014/01/05/being_productive_with_ipython_notebooks.html">Being even more productive with IPython notebooks</a>
         </li><li>
             <a href="2014/01/03/setup_matlab.html">Setting up MATLAB contexts</a>
