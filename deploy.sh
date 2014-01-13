@@ -16,7 +16,7 @@ rm -rf blog
 touch .nojekyll
 git add -A .
 git ci -m "content update"
-git push origin gh-pages
+git push origin gh-pages -f
 git checkout master
 
 echo "Roll back html content commit?"
