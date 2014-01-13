@@ -1,0 +1,46 @@
+Remember Vim folding
+====================
+
+This is to help me remember the folding commands in Vim:
+
++----------+--------------------------------------+
+| Keyboard | Operation                            |
++==========+======================================+
+| zd       | Delete one fold                      |
++----------+--------------------------------------+
+| zD       | Delete one fold recursivley          |
++----------+--------------------------------------+
+| zE       | Eliminate all folds in the window    |
++----------+--------------------------------------+
+| zo       | Open one fold                        |
++----------+--------------------------------------+
+| zO       | Open all folds recursivley           |
++----------+--------------------------------------+
+| zc       | Close fold                           |
++----------+--------------------------------------+
+| zC       | Close all folds recursivley          |
++----------+--------------------------------------+
+| za       | Toggle open/closed                   |
++----------+--------------------------------------+
+| zA       | Recursivley toggle open/closed       |
++----------+--------------------------------------+
+| zR       | Open all folds                       |
++----------+--------------------------------------+
+| zM       | Close all folds                      |
++----------+--------------------------------------+
+| [z       | Move to the start of current open    |
+|          | fold                                 |
++----------+--------------------------------------+
+| ]z       | Move to end of current fold          |
++----------+--------------------------------------+
+| zj       | Move downwards to start of next fold |
++----------+--------------------------------------+
+| zk       | Move upwards to the end of the       |
+|          | previous fold                        |
++----------+--------------------------------------+
+
+
+.. author:: default
+.. categories:: none
+.. tags:: tools, remember
+.. comments::
