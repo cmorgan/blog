@@ -5,8 +5,144 @@
         <link>http://127.0.0.1/</link>
         <description>Notes and ramblings on hacking and finance</description>
         <language>en-us</language>
-        <pubDate>Wed, 01 May 2013 00:00:00 +0100</pubDate>
+        <pubDate>Mon, 13 Jan 2014 00:00:00 +0000</pubDate>
         
+        <item>
+            <link>http://127.0.0.1/2014/01/13/remember_vim_folding.html</link>
+            <guid>http://127.0.0.1/2014/01/13/remember_vim_folding.html</guid>
+            <title><![CDATA[Remember Vim folding]]></title>
+            <description><![CDATA[<div class="section" id="remember-vim-folding">
+<h1>Remember Vim folding</h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%"/>
+<col width="89%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Operation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>zO</td>
+<td>Open all folds recursivley</td>
+</tr>
+<tr class="row-odd"><td>zo</td>
+<td>Open one fold</td>
+</tr>
+<tr class="row-even"><td>zc</td>
+<td>Close one fold</td>
+</tr>
+<tr class="row-odd"><td>zC</td>
+<td>Close all folds recursivley</td>
+</tr>
+<tr class="row-even"><td>za</td>
+<td>Toggle fold</td>
+</tr>
+<tr class="row-odd"><td>zA</td>
+<td>Toggle fold recursivley</td>
+</tr>
+<tr class="row-even"><td>zR</td>
+<td>Open all folds</td>
+</tr>
+<tr class="row-odd"><td>zM</td>
+<td>Close all folds</td>
+</tr>
+</tbody>
+</table>
+<p>Then i set the following in .vimrc:</p>
+<div class="highlight-python"><pre>&quot; folding
+&quot; toggle open fold
+nnoremap f zA
+&quot; open all
+nnoremap F zR
+&quot; clos all
+nnoremap &lt;C-f&gt; zM</pre>
+</div>
+</div>]]></description>
+             <pubDate>Mon, 13 Jan 2014 00:00:00 +0000</pubDate>
+        </item>
+    
+        <item>
+            <link>http://127.0.0.1/2014/01/05/being_productive_with_ipython_notebooks.html</link>
+            <guid>http://127.0.0.1/2014/01/05/being_productive_with_ipython_notebooks.html</guid>
+            <title><![CDATA[Being even more productive with IPython notebooks]]></title>
+            <description><![CDATA[<div class="section" id="being-even-more-productive-with-ipython-notebooks">
+<h1>Being even more productive with IPython notebooks</h1>
+<p>IPython notebooks are an awesome tool for exploring data. Currently there are a
+few issues with the software which the community are working through.</p>
+<div class="section" id="slides">
+<h2>Slides</h2>
+<p>Particularly useful is the ability to be able to create slides from your
+notebooks using reveal.js:</p>
+<div class="highlight-bash"><div class="highlight"><pre>python3 nbconvert --to slides BeigeBook.ipynb --post serve
+</pre></div>
+</div>
+<p>But we need to follow these steps in order for the formatting to work
+correctly:</p>
+<ol class="arabic simple">
+<li>Add this custom.css file: <a class="reference external" href="https://gist.github.com/damianavila/6211198">https://gist.github.com/damianavila/6211198</a></li>
+<li>Run this little snippet: <a class="reference external" href="https://gist.github.com/damianavila/6211211">https://gist.github.com/damianavila/6211211</a></li>
+<li>Add ?print.pdf to the end of the url</li>
+<li>Print to pdf, use Landscape orientation</li>
+</ol>
+</div>
+<div class="section" id="git">
+<h2>Git</h2>
+<p>The JSON format of IPython notebooks is create, however there is no need to save Base64 encoded binary data in Git. We can strip out the binary blobs with Git filters.  Add the following somewhere on your path: <a class="reference external" href="https://github.com/cfriedline/ipynb_template/blob/master/nbstripout">https://github.com/cfriedline/ipynb_template/blob/master/nbstripout</a>, then add the following in <span class="docutils literal"><span class="pre">.git/config</span></span>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="o">[</span>filter <span class="s2">&quot;stripoutput&quot;</span><span class="o">]</span>
+    <span class="nv">clean</span> <span class="o">=</span> <span class="s2">&quot;/path/to/nbstripout&quot;</span>
+</pre></div>
+</div>
+<p>And a <span class="docutils literal"><span class="pre">.gitattributes</span></span> file in your project root with the following contents:</p>
+<div class="highlight-bash"><div class="highlight"><pre>*.ipynb <span class="nv">filter</span><span class="o">=</span>stripoutput
+</pre></div>
+</div>
+<p>You will not notice any changes to your local <span class="docutils literal"><span class="pre">.ipynb</span></span> file when you commit (as the content is being filtered, not replaced as a pre-commit hook would do). Once committed, delete the file and checkout again and you will see a <span class="docutils literal"><span class="pre">.ipynb</span></span> file sans output. Also the numbering of cells will start continuously from 1 - great!</p>
+</div>
+</div>]]></description>
+             <pubDate>Sun, 05 Jan 2014 00:00:00 +0000</pubDate>
+        </item>
+    
+        <item>
+            <link>http://127.0.0.1/2014/01/03/setup_matlab.html</link>
+            <guid>http://127.0.0.1/2014/01/03/setup_matlab.html</guid>
+            <title><![CDATA[Setting up MATLAB contexts]]></title>
+            <description><![CDATA[<div class="section" id="setting-up-matlab-contexts">
+<h1>Setting up MATLAB contexts</h1>
+<p>If you are forced to use MATLAB (here’s a whole blog devoted to the topic of
+why not to use it <a class="reference external" href="http://abandonmatlab.wordpress.com">http://abandonmatlab.wordpress.com/</a>) the following advice
+maybe useful for easily managing your path and hence creating contexts of work.</p>
+<p>In cases where Administrator privileges are not held, the following config. is
+flexible.</p>
+<p>Define MATLAB’s <span class="docutils literal"><span class="pre">userpath</span></span> to be a user writeable directory. This is the initial
+directory MATLAB will parse.</p>
+<p>Within the <span class="docutils literal"><span class="pre">userpath</span></span> create <span class="docutils literal"><span class="pre">startup.m</span></span>:</p>
+<div class="highlight-matlab"><div class="highlight"><pre><span class="k">if</span> <span class="o">~</span><span class="n">isdeployed</span>
+    <span class="n">path</span><span class="p">(</span><span class="n">my_path</span><span class="p">)</span>
+    <span class="n">set_vars</span>
+</pre></div>
+</div>
+<p>Where <span class="docutils literal"><span class="pre">my_path</span></span> is a matlab file which sets the path like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">function</span> <span class="n">p</span> <span class="o">=</span> <span class="n">my_path</span>
+     <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="s">'/home/chris/matlab;'</span><span class="p">,</span> <span class="s">'/home/chris/important;'</span><span class="p">];</span>
+     <span class="n">cd</span><span class="p">(</span><span class="s">'/home/chris/matlab'</span><span class="p">);</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+<p>So we set the path and cd to a relevant directory. Also in the userpath folder,
+one can keep many files like <span class="docutils literal"><span class="pre">my_path.m</span></span>, which define different contexts to
+work in, making changing contexts as easy as:</p>
+<div class="highlight-matlab"><div class="highlight"><pre><span class="n">path</span><span class="p">(</span><span class="n">my_other_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Whithin each context <span class="docutils literal"><span class="pre">path</span></span> file if you also call the <span class="docutils literal"><span class="pre">set_vars</span></span> script,
+this allows <span class="docutils literal"><span class="pre">set_vars</span></span> to contain useful variables e.g. paths to output
+directories and the like.</p>
+</div>]]></description>
+             <pubDate>Fri, 03 Jan 2014 00:00:00 +0000</pubDate>
+        </item>
+    
         <item>
             <link>http://127.0.0.1/2013/05/01/common_operations_in_pandas.html</link>
             <guid>http://127.0.0.1/2013/05/01/common_operations_in_pandas.html</guid>
@@ -246,142 +382,6 @@ only for then we can do the following to have a continuous time series:</p>
 </div>
 </div>]]></description>
              <pubDate>Wed, 01 May 2013 00:00:00 +0100</pubDate>
-        </item>
-    
-        <item>
-            <link>http://127.0.0.1/2014/01/13/remember_vim_folding.html</link>
-            <guid>http://127.0.0.1/2014/01/13/remember_vim_folding.html</guid>
-            <title><![CDATA[Remember Vim folding]]></title>
-            <description><![CDATA[<div class="section" id="remember-vim-folding">
-<h1>Remember Vim folding</h1>
-<table border="1" class="docutils">
-<colgroup>
-<col width="11%"/>
-<col width="89%"/>
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Key</th>
-<th class="head">Operation</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>zO</td>
-<td>Open all folds recursivley</td>
-</tr>
-<tr class="row-odd"><td>zo</td>
-<td>Open one fold</td>
-</tr>
-<tr class="row-even"><td>zc</td>
-<td>Close one fold</td>
-</tr>
-<tr class="row-odd"><td>zC</td>
-<td>Close all folds recursivley</td>
-</tr>
-<tr class="row-even"><td>za</td>
-<td>Toggle fold</td>
-</tr>
-<tr class="row-odd"><td>zA</td>
-<td>Toggle fold recursivley</td>
-</tr>
-<tr class="row-even"><td>zR</td>
-<td>Open all folds</td>
-</tr>
-<tr class="row-odd"><td>zM</td>
-<td>Close all folds</td>
-</tr>
-</tbody>
-</table>
-<p>Then i set the following in .vimrc:</p>
-<div class="highlight-python"><pre>&quot; folding
-&quot; toggle open fold
-nnoremap f zA
-&quot; open all
-nnoremap F zR
-&quot; clos all
-nnoremap &lt;C-f&gt; zM</pre>
-</div>
-</div>]]></description>
-             <pubDate>Mon, 13 Jan 2014 00:00:00 +0000</pubDate>
-        </item>
-    
-        <item>
-            <link>http://127.0.0.1/2014/01/05/being_productive_with_ipython_notebooks.html</link>
-            <guid>http://127.0.0.1/2014/01/05/being_productive_with_ipython_notebooks.html</guid>
-            <title><![CDATA[Being even more productive with IPython notebooks]]></title>
-            <description><![CDATA[<div class="section" id="being-even-more-productive-with-ipython-notebooks">
-<h1>Being even more productive with IPython notebooks</h1>
-<p>IPython notebooks are an awesome tool for exploring data. Currently there are a
-few issues with the software which the community are working through.</p>
-<div class="section" id="slides">
-<h2>Slides</h2>
-<p>Particularly useful is the ability to be able to create slides from your
-notebooks using reveal.js:</p>
-<div class="highlight-bash"><div class="highlight"><pre>python3 nbconvert --to slides BeigeBook.ipynb --post serve
-</pre></div>
-</div>
-<p>But we need to follow these steps in order for the formatting to work
-correctly:</p>
-<ol class="arabic simple">
-<li>Add this custom.css file: <a class="reference external" href="https://gist.github.com/damianavila/6211198">https://gist.github.com/damianavila/6211198</a></li>
-<li>Run this little snippet: <a class="reference external" href="https://gist.github.com/damianavila/6211211">https://gist.github.com/damianavila/6211211</a></li>
-<li>Add ?print.pdf to the end of the url</li>
-<li>Print to pdf, use Landscape orientation</li>
-</ol>
-</div>
-<div class="section" id="git">
-<h2>Git</h2>
-<p>The JSON format of IPython notebooks is create, however there is no need to save Base64 encoded binary data in Git. We can strip out the binary blobs with Git filters.  Add the following somewhere on your path: <a class="reference external" href="https://github.com/cfriedline/ipynb_template/blob/master/nbstripout">https://github.com/cfriedline/ipynb_template/blob/master/nbstripout</a>, then add the following in <span class="docutils literal"><span class="pre">.git/config</span></span>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">[</span>filter <span class="s2">&quot;stripoutput&quot;</span><span class="o">]</span>
-    <span class="nv">clean</span> <span class="o">=</span> <span class="s2">&quot;/path/to/nbstripout&quot;</span>
-</pre></div>
-</div>
-<p>And a <span class="docutils literal"><span class="pre">.gitattributes</span></span> file in your project root with the following contents:</p>
-<div class="highlight-bash"><div class="highlight"><pre>*.ipynb <span class="nv">filter</span><span class="o">=</span>stripoutput
-</pre></div>
-</div>
-<p>You will not notice any changes to your local <span class="docutils literal"><span class="pre">.ipynb</span></span> file when you commit (as the content is being filtered, not replaced as a pre-commit hook would do). Once committed, delete the file and checkout again and you will see a <span class="docutils literal"><span class="pre">.ipynb</span></span> file sans output. Also the numbering of cells will start continuously from 1 - great!</p>
-</div>
-</div>]]></description>
-             <pubDate>Sun, 05 Jan 2014 00:00:00 +0000</pubDate>
-        </item>
-    
-        <item>
-            <link>http://127.0.0.1/2014/01/03/setup_matlab.html</link>
-            <guid>http://127.0.0.1/2014/01/03/setup_matlab.html</guid>
-            <title><![CDATA[Setting up MATLAB contexts]]></title>
-            <description><![CDATA[<div class="section" id="setting-up-matlab-contexts">
-<h1>Setting up MATLAB contexts</h1>
-<p>If you are forced to use MATLAB (here’s a whole blog devoted to the topic of
-why not to use it <a class="reference external" href="http://abandonmatlab.wordpress.com">http://abandonmatlab.wordpress.com/</a>) the following advice
-maybe useful for easily managing your path and hence creating contexts of work.</p>
-<p>In cases where Administrator privileges are not held, the following config. is
-flexible.</p>
-<p>Define MATLAB’s <span class="docutils literal"><span class="pre">userpath</span></span> to be a user writeable directory. This is the initial
-directory MATLAB will parse.</p>
-<p>Within the <span class="docutils literal"><span class="pre">userpath</span></span> create <span class="docutils literal"><span class="pre">startup.m</span></span>:</p>
-<div class="highlight-matlab"><div class="highlight"><pre><span class="k">if</span> <span class="o">~</span><span class="n">isdeployed</span>
-    <span class="n">path</span><span class="p">(</span><span class="n">my_path</span><span class="p">)</span>
-    <span class="n">set_vars</span>
-</pre></div>
-</div>
-<p>Where <span class="docutils literal"><span class="pre">my_path</span></span> is a matlab file which sets the path like:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">function</span> <span class="n">p</span> <span class="o">=</span> <span class="n">my_path</span>
-     <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="s">'/home/chris/matlab;'</span><span class="p">,</span> <span class="s">'/home/chris/important;'</span><span class="p">];</span>
-     <span class="n">cd</span><span class="p">(</span><span class="s">'/home/chris/matlab'</span><span class="p">);</span>
-<span class="n">end</span>
-</pre></div>
-</div>
-<p>So we set the path and cd to a relevant directory. Also in the userpath folder,
-one can keep many files like <span class="docutils literal"><span class="pre">my_path.m</span></span>, which define different contexts to
-work in, making changing contexts as easy as:</p>
-<div class="highlight-matlab"><div class="highlight"><pre><span class="n">path</span><span class="p">(</span><span class="n">my_other_path</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Whithin each context <span class="docutils literal"><span class="pre">path</span></span> file if you also call the <span class="docutils literal"><span class="pre">set_vars</span></span> script,
-this allows <span class="docutils literal"><span class="pre">set_vars</span></span> to contain useful variables e.g. paths to output
-directories and the like.</p>
-</div>]]></description>
-             <pubDate>Fri, 03 Jan 2014 00:00:00 +0000</pubDate>
         </item>
     
     </channel>
