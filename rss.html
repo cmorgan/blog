@@ -5,8 +5,249 @@
         <link>http://127.0.0.1/</link>
         <description>Notes and ramblings on hacking and finance</description>
         <language>en-us</language>
-        <pubDate>Mon, 13 Jan 2014 00:00:00 +0000</pubDate>
+        <pubDate>Wed, 01 May 2013 00:00:00 +0100</pubDate>
         
+        <item>
+            <link>http://127.0.0.1/2013/05/01/common_operations_in_pandas.html</link>
+            <guid>http://127.0.0.1/2013/05/01/common_operations_in_pandas.html</guid>
+            <title><![CDATA[Common operations in Pandas]]></title>
+            <description><![CDATA[<div class="section" id="common-operations-in-pandas">
+<h1>Common operations in Pandas</h1>
+<p>If you munge data in Python then you really should be using <a class="reference external" href="http://pandas.pydata.org">Pandas</a>. These are some notes about common operations.</p>
+<div class="section" id="hierachical-index">
+<h2>Hierachical index</h2>
+<p>Given a set of data like this (refered to as Table A):</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="36%"/>
+<col width="16%"/>
+<col width="16%"/>
+<col width="16%"/>
+<col width="17%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"> </th>
+<th class="head">Bid</th>
+<th class="head">Mid</th>
+<th class="head">Offer</th>
+<th class="head">Variable</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1994-01-03 16:00:00</td>
+<td>0.9980</td>
+<td>0.9981</td>
+<td>0.9981</td>
+<td>ARS</td>
+</tr>
+<tr class="row-odd"><td>1994-01-03 16:00:00</td>
+<td>12.2190</td>
+<td>12.2215</td>
+<td>12.2240</td>
+<td>ATS</td>
+</tr>
+<tr class="row-even"><td>1994-01-03 16:00:00</td>
+<td>0.6835</td>
+<td>0.6838</td>
+<td>0.6840</td>
+<td>AUD</td>
+</tr>
+<tr class="row-odd"><td>1994-01-03 16:00:00</td>
+<td>39.0000</td>
+<td>39.0000</td>
+<td>39.0000</td>
+<td>BDT</td>
+</tr>
+<tr class="row-even"><td>1994-01-03 16:00:00</td>
+<td>36.2060</td>
+<td>36.2425</td>
+<td>36.2790</td>
+<td>BEF</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>It often makes more sense to represent it as a hierachical index (referred to as Table B), e.g.</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="36%"/>
+<col width="17%"/>
+<col width="16%"/>
+<col width="16%"/>
+<col width="16%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"> </th>
+<th class="head"> </th>
+<th class="head">Bid</th>
+<th class="head">Mid</th>
+<th class="head">Offer</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>index</td>
+<td>Variable</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr class="row-odd"><td>1994-01-03 16:00:00</td>
+<td>ARS</td>
+<td>0.9980</td>
+<td>0.9981</td>
+<td>0.9981</td>
+</tr>
+<tr class="row-even"><td> </td>
+<td>ATS</td>
+<td>12.2190</td>
+<td>12.2215</td>
+<td>12.2240</td>
+</tr>
+<tr class="row-odd"><td> </td>
+<td>AUD</td>
+<td>0.6835</td>
+<td>0.6838</td>
+<td>0.6840</td>
+</tr>
+<tr class="row-even"><td> </td>
+<td>BDT</td>
+<td>39.0000</td>
+<td>39.0000</td>
+<td>39.0000</td>
+</tr>
+<tr class="row-odd"><td> </td>
+<td>BEF</td>
+<td>36.2060</td>
+<td>36.2425</td>
+<td>36.2790</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>This can be done for a pandas.DataFrame <span class="docutils literal"><span class="pre">df</span></span> like so</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s">'index'</span><span class="p">,</span> <span class="s">'Variable'</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="subset-of-columns-and-a-pivot">
+<h2>Subset of columns and a pivot</h2>
+<p>Consider again Table A above loaded as <span class="docutils literal"><span class="pre">df</span></span>, if we wish to filter out a
+subset of values in the <span class="docutils literal"><span class="pre">Variable</span></span> column, and consider the <span class="docutils literal"><span class="pre">Mid</span></span> values
+only for then we can do the following to have a continuous time series:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">g10_set</span> <span class="o">=</span> <span class="p">[</span>
+<span class="s">'USD'</span><span class="p">,</span> <span class="s">'EUR'</span><span class="p">,</span> <span class="s">'JPY'</span><span class="p">,</span> <span class="s">'CHF'</span><span class="p">,</span> <span class="s">'GBP'</span><span class="p">,</span> <span class="s">'AUD'</span><span class="p">,</span> <span class="s">'CAD'</span><span class="p">,</span> <span class="s">'SEK'</span><span class="p">,</span>
+<span class="s">'NOK'</span><span class="p">,</span> <span class="s">'NZD'</span>
+<span class="p">]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'Variable'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">g10_set</span><span class="p">)]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span>
+    <span class="n">index</span><span class="o">=</span><span class="s">'index'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">'Variable'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">'Mid'</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Which results in Table C:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="26%"/>
+<col width="10%"/>
+<col width="10%"/>
+<col width="10%"/>
+<col width="6%"/>
+<col width="10%"/>
+<col width="11%"/>
+<col width="10%"/>
+<col width="7%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Variable</th>
+<th class="head">AUD</th>
+<th class="head">CAD</th>
+<th class="head">CHF</th>
+<th class="head">EUR</th>
+<th class="head">GBP</th>
+<th class="head">JPY</th>
+<th class="head">NOK</th>
+<th class="head"> </th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>index</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr class="row-odd"><td>1994-01-03 16:00:00</td>
+<td>0.6838</td>
+<td>1.3143</td>
+<td>1.4827</td>
+<td>NaN</td>
+<td>1.4805</td>
+<td>112.395</td>
+<td>7.5251</td>
+<td> </td>
+</tr>
+<tr class="row-even"><td>1994-01-04 16:00:00</td>
+<td>0.6848</td>
+<td>1.3164</td>
+<td>1.4861</td>
+<td>NaN</td>
+<td>1.4819</td>
+<td>113.155</td>
+<td>7.5259</td>
+<td> </td>
+</tr>
+<tr class="row-odd"><td>1994-01-05 16:00:00</td>
+<td>0.6873</td>
+<td>1.3153</td>
+<td>1.4800</td>
+<td>NaN</td>
+<td>1.4864</td>
+<td>112.760</td>
+<td>7.5020</td>
+<td> </td>
+</tr>
+<tr class="row-even"><td>1994-01-06 16:00:00</td>
+<td>0.6843</td>
+<td>1.3220</td>
+<td>1.4745</td>
+<td>NaN</td>
+<td>1.4880</td>
+<td>112.555</td>
+<td>7.4903</td>
+<td> </td>
+</tr>
+<tr class="row-odd"><td>1994-01-07 16:00:00</td>
+<td>0.6868</td>
+<td>1.3225</td>
+<td>1.4705</td>
+<td>NaN</td>
+<td>1.4905</td>
+<td>111.825</td>
+<td>7.4865</td>
+<td> </td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="other">
+<h2>Other</h2>
+<ul class="simple">
+<li>Find row where value of column is max: <span class="docutils literal"><span class="pre">df['AUD'].argmax()</span></span></li>
+</ul>
+</div>
+</div>]]></description>
+             <pubDate>Wed, 01 May 2013 00:00:00 +0100</pubDate>
+        </item>
+    
         <item>
             <link>http://127.0.0.1/2014/01/13/remember_vim_folding.html</link>
             <guid>http://127.0.0.1/2014/01/13/remember_vim_folding.html</guid>
