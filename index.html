@@ -444,10 +444,13 @@ only for then we can do the following to have a continuous time series:</p>
 </table>
 </div></blockquote>
 </div>
-<div class="section" id="other">
-<h2>Other</h2>
+<div class="section" id="other-bits-and-bobs">
+<h2>Other bits and bobs</h2>
 <ul class="simple">
 <li>Find row where value of column is max: <span class="docutils literal"><span class="pre">df['AUD'].argmax()</span></span></li>
+<li>Find indexes of null values <span class="docutils literal"><span class="pre">pd.isnull(df).any(1).nonzero()</span></span> which is
+utilising the <span class="docutils literal"><span class="pre">nonzero</span></span> numpy object, i.e. return indicies of elements
+which are nonzero.</li>
 </ul>
 </div>
 </div>

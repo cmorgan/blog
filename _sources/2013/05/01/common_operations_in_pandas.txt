@@ -87,10 +87,13 @@ Which results in Table C:
     | 1994-01-07 16:00:00 | 0.6868 | 1.3225 | 1.4705 | NaN | 1.4905 | 111.825 | 7.4865 |      |
     +---------------------+--------+--------+--------+-----+--------+---------+--------+------+
 
-Other
------
+Other bits and bobs
+-------------------
 
 * Find row where value of column is max: ``df['AUD'].argmax()``
+* Find indexes of null values ``pd.isnull(df).any(1).nonzero()`` which is
+  utilising the ``nonzero`` numpy object, i.e. return indicies of elements
+  which are nonzero.
 
 .. author:: default
 .. categories:: none
