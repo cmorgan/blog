@@ -25,6 +25,10 @@ Export a chunk of that history to a file for editing:
 
     In [2]: %history 173/12-2000 -f hist.py
 
+Then after editing the file ``hist.py`` run this inside your currency IPython
+session with ``run -i hist.py`` (where the ``-i`` indicated running the script
+inside the current sessions namespace).
+
 Sweeet!
 
 .. author:: default
