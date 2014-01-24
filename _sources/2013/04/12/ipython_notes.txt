@@ -14,6 +14,9 @@ Find the command which used the Pandas read_table
 .. code-block:: python
 
     In [1]: %history -g read_table
+
+which outputs::
+
     173/5: df = pd.io.parsers.read_table(fname, header=6)
     173/9: pd.io.parsers.read_table?
     173/10: df = pd.io.parsers.read_table(fname, header=6, index_col=0)

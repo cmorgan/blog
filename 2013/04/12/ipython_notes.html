@@ -75,8 +75,11 @@ recovering commnads from an interactive programming session.</p>
 <p>Imagine you forgot to save some dataset manipulation (loading tabdeliminated
 csv into a DataFrame), you can easily recover that analysis:</p>
 <p>Find the command which used the Pandas read_table</p>
-<div class="highlight-python"><pre>In [1]: %history -g read_table
-173/5: df = pd.io.parsers.read_table(fname, header=6)
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="o">%</span><span class="n">history</span> <span class="o">-</span><span class="n">g</span> <span class="n">read_table</span>
+</pre></div>
+</div>
+<p>which outputs:</p>
+<div class="highlight-python"><pre>173/5: df = pd.io.parsers.read_table(fname, header=6)
 173/9: pd.io.parsers.read_table?
 173/10: df = pd.io.parsers.read_table(fname, header=6, index_col=0)
 173/12: df = pd.io.parsers.read_table(fname, header=6, index_col=0, parse_dates=True)</pre>
