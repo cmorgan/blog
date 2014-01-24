@@ -405,5 +405,32 @@ which are nonzero.</li>
              <pubDate>Wed, 01 May 2013 00:00:00 +0100</pubDate>
         </item>
     
+        <item>
+            <link>http://127.0.0.1/2013/04/12/ipython_notes.html</link>
+            <guid>http://127.0.0.1/2013/04/12/ipython_notes.html</guid>
+            <title><![CDATA[IPython notes]]></title>
+            <description><![CDATA[<div class="section" id="ipython-notes">
+<h1>IPython notes</h1>
+<p>This is a post to jog my memory when needed.</p>
+<p>IPython saves all it’s hisotry in a SQLite database. This is super useful for
+recovering commnads from an interactive programming session.</p>
+<p>Imagine you forgot to save some dataset manipulation (loading tabdeliminated
+csv into a DataFrame), you can easily recover that analysis:</p>
+<p>Find the command which used the Pandas read_table</p>
+<div class="highlight-python"><pre>In [1]: %history -g read_table
+173/5: df = pd.io.parsers.read_table(fname, header=6)
+173/9: pd.io.parsers.read_table?
+173/10: df = pd.io.parsers.read_table(fname, header=6, index_col=0)
+173/12: df = pd.io.parsers.read_table(fname, header=6, index_col=0, parse_dates=True)</pre>
+</div>
+<p>Export a chunk of that history to a file for editing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="o">%</span><span class="n">history</span> <span class="mi">173</span><span class="o">/</span><span class="mi">12</span><span class="o">-</span><span class="mi">2000</span> <span class="o">-</span><span class="n">f</span> <span class="n">hist</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Sweeet!</p>
+</div>]]></description>
+             <pubDate>Fri, 12 Apr 2013 00:00:00 +0100</pubDate>
+        </item>
+    
     </channel>
 </rss>
