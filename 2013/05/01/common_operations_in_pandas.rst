@@ -2,6 +2,8 @@
 Common operations in Pandas
 ===========================
 
+This is another "do not forget" post.
+
 If you munge data in Python then you really should be using `Pandas
 <http://pandas.pydata.org/>`_. These are some notes about common operations.
 
@@ -86,6 +88,29 @@ Which results in Table C:
     +---------------------+--------+--------+--------+-----+--------+---------+--------+------+
     | 1994-01-07 16:00:00 | 0.6868 | 1.3225 | 1.4705 | NaN | 1.4905 | 111.825 | 7.4865 |      |
     +---------------------+--------+--------+--------+-----+--------+---------+--------+------+
+
+
+Working with the index
+----------------------
+
+To extract indexed data points which are common to df1 from df2, you can do the
+following:
+
+.. code-block:: python
+
+    df2 = df2.ix[df1.index]
+
+To extract ranges of index from df2, the DataFrame may be sliced:
+
+.. code-block:: python
+
+    # extract ranges of index
+    df2.ix[df1.index[0]:df1.index[-1]]
+
+    # and similarly specific values may also be accesed, pandas will coerce
+    # these to pd.Timestamp
+    df2.ix['2013-12-31 16:00:00']
+
 
 Other bits and bobs
 -------------------
