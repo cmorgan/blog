@@ -20,7 +20,7 @@ description = 'Notes and meditations'
 author = 'Chris Morgan'
 
 # Change this to your copyright string
-copyright = '2013, ' + author
+copyright = '2014, ' + author
 
 # Change this to your blog root URL (required for RSS feed)
 website = 'http://127.0.0.1/'
