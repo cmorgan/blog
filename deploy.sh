@@ -14,6 +14,7 @@ done
 mv blog/html/* .
 rm -rf blog
 touch .nojekyll
+echo "wachunga.com" > CNAME
 git add -A .
 git ci -m "content update"
 git push origin gh-pages -f
