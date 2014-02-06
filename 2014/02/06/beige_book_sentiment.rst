@@ -4,11 +4,11 @@ Beige Book Sentiment
 Why?
 ----
 
-Behvioural finance has provided proof that financial decisions are
+Behavioural finance has provided proof that financial decisions are
 significantly driven by emotion and mood [1].
 
 Therefore if we can gauge the mood of policy makers, perhaps we can gauge
-policy decison.
+policy decision.
 
 Rochester Cahan, VP of Global Equity Quantitative Strategy at Deutsche Bank,
 states that the sentiment scores of Thomson Reuters (powered by Lexalytics) are
@@ -18,9 +18,9 @@ Commercial Products and Funds
 -----------------------------
 
 There are a number of commercial products and funds already providing or
-exploting sentiment based signals.
+exploiting sentiment based signals.
 
-Thompson Reuters recently aquired `Lexalytics <http://www.lexalytics.com/>`_
+Thompson Reuters recently acquired `Lexalytics <http://www.lexalytics.com/>`_
 who provide sentiment indicators in machine readable format. Global sentiment
 indicators are also provided by `MarketPsych <https://ww.marketpsych.com>`_, a
 spin off company from the now closed MarketPsych Captial fund setup by `Richard
@@ -33,14 +33,14 @@ use case of sentiment analysis. Founded by Paul Hawtin in 2013 the fund works
 closely with the team behind the paper `Twitter Mood Predicts the Stock Market
 (pre-print) <http://arxiv.org/pdf/1010.3003&>`_ [3] in order to gauge the
 entire Twitter verse in terms of 6 different moods: calm, alert, sure, vital,
-kind, happy. They found that predominatly only the calm mood was Granger
+kind, happy. They found that predominately only the calm mood was Granger
 causative with DJIA.
 
 
 Sentiment from the Beige Book
 -----------------------------
 
-* Beige Book content downloaded programmatically since 1970.
+* Beige Book content downloaded pro programmatically since 1970.
 * Text cleaned and put into common format. 
 
 .. image:: /_static/beige_book_words.png
@@ -90,6 +90,9 @@ between sentiment of the Beige Book and the T-bill discount rate. Soon i will
 publish statistical analysis of this causality (Granger or otherwise).
 
 For more info. on this experiment please get in touch, chris.j.morgan@gmail.com.
+
+References
+----------
 
 [1] J.R. Nofsinger, Social mood and financial economics, Journal of Behaviour
 Finance 6 (3) (2005) 144–160.
