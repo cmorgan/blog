@@ -91,6 +91,15 @@ publish statistical analysis of this causality (Granger or otherwise).
 
 For more info. on this experiment please get in touch, chris.j.morgan@gmail.com.
 
+[1] J.R. Nofsinger, Social mood and financial economics, Journal of Behaviour
+Finance 6 (3) (2005) 144–160.
+
+[2] http://strata.oreilly.com/2011/05/sentiment-analysis-finance.html
+
+[3] Johan Bollen, Huina Mao, Xiao-Jun Zeng: Twitter mood predicts the stock market.
+J. Comput. Science 2(1): 1-8 (2011)
+
+
 .. author:: default
 .. categories:: none
 .. tags:: finance, research
