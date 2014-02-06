@@ -1,5 +1,6 @@
 #!/bin/sh
 
+set -ex
 git checkout master
 tinker --build
 git add -A .
