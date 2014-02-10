@@ -25,7 +25,7 @@ correctly:
 Git
 ---
 
-The JSON format of IPython notebooks is create, however there is no need to save Base64 encoded binary data in Git. We can strip out the binary blobs with Git filters.  Add the following somewhere on your path: https://github.com/cfriedline/ipynb_template/blob/master/nbstripout, then add the following in ``.git/config``:
+The JSON format of IPython notebooks is great, however there is no need to save Base64 encoded binary data in Git. We can strip out the binary blobs with Git filters.  Add the following somewhere on your path: https://github.com/cfriedline/ipynb_template/blob/master/nbstripout, then add the following in ``.git/config``:
 
 .. code-block:: bash
 
