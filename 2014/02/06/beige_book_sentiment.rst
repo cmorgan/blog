@@ -1,6 +1,12 @@
 Beige Book Sentiment
 ====================
 
+.. figure:: /_static/beige_book_word_cloud.png
+    :align: center
+
+    Word cloud showing relative frequencies of words in all Beige Books since
+    1970
+
 Why?
 ----
 
