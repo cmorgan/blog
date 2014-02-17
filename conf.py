@@ -14,7 +14,7 @@ project = 'Wachunga'
 tagline = 'Notes and ramblings on hacking and finance'
 
 # Change this to the description of your blog
-description = 'Notes and meditations'
+description = tagline
 
 # Change this to your name
 author = 'Chris Morgan'
@@ -23,7 +23,7 @@ author = 'Chris Morgan'
 copyright = '2014, ' + author
 
 # Change this to your blog root URL (required for RSS feed)
-website = 'http://127.0.0.1/'
+website = 'http://wachunga.com'
 
 # **************************************************************
 # More tweaks you can do
@@ -33,7 +33,7 @@ website = 'http://127.0.0.1/'
 disqus_shortname = 'Wachunga'
 
 # Change your favicon (new favicon goes in _static directory)
-html_favicon = 'tinkerer.ico'
+html_favicon = 'favicon.ico'
 
 # Pick another Tinkerer theme or use your own
 html_theme = "flat"
