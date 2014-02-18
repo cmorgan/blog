@@ -1,0 +1,135 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="Notes and ramblings on hacking and finance">
+        <meta name="viewport" content="width=device-width">
+        <title>IPython notes &mdash; Wachunga</title>
+            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/flat.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css">
+        <!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script>
+        <script src="../../../_static/main.js"></script>
+        <link rel="prev" title="Common operations in Pandas" href="../../05/01/common_operations_in_pandas.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="../../../_static/disqus.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
+            }
+        });
+    </script></head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><header>
+            <hgroup>
+              <h1><a href="../../../index.html">Wachunga</a></h1><h2>Notes and ramblings on hacking and finance</h2></hgroup>
+          </header>
+      <nav>
+            <ul><li class="main-nav">
+                  <a href="../../../index.html">Home</a>
+                </li>
+              <li class="main-nav">
+                  <a href="../../../pages/about.html">About</a>
+                </li>
+              </ul>
+          </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
+            <span>April 12, 2013</span>
+        </div>
+    <div class="section" id="ipython-notes">
+<h1>IPython notes</h1>
+<p>This is a post to jog my memory when needed.</p>
+<p>IPython saves all it&#8217;s hisotry in a SQLite database. This is super useful for
+recovering commnads from an interactive programming session.</p>
+<p>Imagine you forgot to save some dataset manipulation (loading tabdeliminated
+csv into a DataFrame), you can easily recover that analysis:</p>
+<p>Find the command which used the Pandas read_table</p>
+<div class="highlight-python"><div class="highlight"><pre>In [1]: %history -g read_table
+173/5: df = pd.io.parsers.read_table(fname, header=6)
+173/9: pd.io.parsers.read_table?
+173/10: df = pd.io.parsers.read_table(fname, header=6, index_col=0)
+173/12: df = pd.io.parsers.read_table(fname, header=6, index_col=0, parse_dates=True)
+</pre></div>
+</div>
+<p>Export a chunk of that history to a file for editing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="o">%</span><span class="n">history</span> <span class="mi">173</span><span class="o">/</span><span class="mi">12</span><span class="o">-</span><span class="mi">2000</span> <span class="o">-</span><span class="n">f</span> <span class="n">hist</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Then after editing the file <span class="docutils literal"><span class="pre">hist.py</span></span> run this inside your currency IPython
+session with <span class="docutils literal"><span class="pre">run</span> <span class="pre">-i</span> <span class="pre">hist.py</span></span> (where the <span class="docutils literal"><span class="pre">-i</span></span> indicated running the script
+inside the current sessions namespace).</p>
+<p>Sweeet!</p>
+</div>
+
+    <div class="postmeta">
+        <div class="author">
+            <span>Posted by Chris Morgan</span>
+        </div>
+        
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="../../../tags/remember.html">remember</a>, <a href="../../../tags/tools.html">tools</a>, <a href="../../../tags/python.html">python</a></span>
+        </div>
+        </div><ul class="related clearfix">
+            <li class="left"> &laquo; <a href="../../05/01/common_operations_in_pandas.html">Common operations in Pandas</a></li>
+            <li class="right"></li>
+        </ul><div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "Wachunga";    var disqus_identifier = "2013/04/12/ipython_notes";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></article><aside class="sidebar"><section><div class="widget">
+    <h1>Recent Posts</h1>
+    <ul><li>
+            <a href="../../../2014/02/18/hal_r_varian.html">Hal R. Varian</a>
+        </li><li>
+            <a href="../../../2014/02/06/beige_book_sentiment.html">Beige Book Sentiment</a>
+        </li><li>
+            <a href="../../../2014/01/13/remember_vim_folding.html">Remember Vim folding</a>
+        </li><li>
+            <a href="../../../2014/01/05/being_productive_with_ipython_notebooks.html">Being even more productive with IPython notebooks</a>
+        </li><li>
+            <a href="../../../2014/01/03/setup_matlab.html">Setting up MATLAB contexts</a>
+        </li><li>
+            <a href="../../05/01/common_operations_in_pandas.html">Common operations in Pandas</a>
+        </li><li>
+            <a href="#">IPython notes</a>
+        </li></ul>
+</div>
+</section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2014, Chris Morgan. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
+</html>

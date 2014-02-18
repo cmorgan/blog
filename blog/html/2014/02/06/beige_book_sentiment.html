@@ -1,0 +1,197 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="Notes and ramblings on hacking and finance">
+        <meta name="viewport" content="width=device-width">
+        <title>Beige Book Sentiment &mdash; Wachunga</title>
+            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/flat.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css">
+        <!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script>
+        <script src="../../../_static/main.js"></script>
+        <link rel="next" title="Remember Vim folding" href="../../01/13/remember_vim_folding.html" /><link rel="prev" title="Hal R. Varian" href="../18/hal_r_varian.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="../../../_static/disqus.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
+            }
+        });
+    </script></head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><header>
+            <hgroup>
+              <h1><a href="../../../index.html">Wachunga</a></h1><h2>Notes and ramblings on hacking and finance</h2></hgroup>
+          </header>
+      <nav>
+            <ul><li class="main-nav">
+                  <a href="../../../index.html">Home</a>
+                </li>
+              <li class="main-nav">
+                  <a href="../../../pages/about.html">About</a>
+                </li>
+              </ul>
+          </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
+            <span>February 06, 2014</span>
+        </div>
+    <div class="section" id="beige-book-sentiment">
+<h1>Beige Book Sentiment</h1>
+<div class="figure align-center">
+<img alt="../../../_images/beige_book_word_cloud.png" src="../../../_images/beige_book_word_cloud.png" />
+<p class="caption">Word cloud showing relative frequencies of words in all Beige Books since
+1970</p>
+</div>
+<div class="section" id="why">
+<h2>Why?</h2>
+<p>Behavioural finance has provided proof that financial decisions are
+significantly driven by emotion and mood [1].</p>
+<p>Therefore if we can gauge the mood of policy makers, perhaps we can gauge
+policy decision.</p>
+<p>Rochester Cahan, VP of Global Equity Quantitative Strategy at Deutsche Bank,
+states that the sentiment scores of Thomson Reuters (powered by Lexalytics) are
+uncorrelated with traditional quantitative signals [2].</p>
+</div>
+<div class="section" id="commercial-products-and-funds">
+<h2>Commercial Products and Funds</h2>
+<p>There are a number of commercial products and funds already providing or
+exploiting sentiment based signals.</p>
+<p>Thompson Reuters recently acquired <a class="reference external" href="http://www.lexalytics.com/">Lexalytics</a>
+who provide sentiment indicators in machine readable format. Global sentiment
+indicators are also provided by <a class="reference external" href="https://ww.marketpsych.com">MarketPsych</a>, a
+spin off company from the now closed MarketPsych Captial fund setup by <a class="reference external" href="http://www.richard.peterson.net">Richard
+Peterson MD</a> who reported a 28% return from
+Sept. 2, 2008, through Dec. 31, 2010 while the S&amp;P 500 lost 1.6 percent over
+the same period.</p>
+<p>Cayman Atlantic, aka the &#8220;Twitter Hedge Fund&#8221; is probably the most high profile
+use case of sentiment analysis. Founded by Paul Hawtin in 2013 the fund works
+closely with the team behind the paper <a class="reference external" href="http://arxiv.org/pdf/1010.3003&amp;">Twitter Mood Predicts the Stock Market
+(pre-print)</a> [3] in order to gauge the
+entire Twitter verse in terms of 6 different moods: calm, alert, sure, vital,
+kind, happy. They found that predominately only the calm mood was Granger
+causative with DJIA.</p>
+</div>
+<div class="section" id="sentiment-from-the-beige-book">
+<h2>Sentiment from the Beige Book</h2>
+<ul class="simple">
+<li>Beige Book content downloaded pro programmatically since 1970.</li>
+<li>Text cleaned and put into common format.</li>
+</ul>
+<a class="reference internal image-reference" href="../../../_images/beige_book_words.png"><img alt="../../../_images/beige_book_words.png" src="../../../_images/beige_book_words.png" style="width: 600px;" /></a>
+<ul>
+<li><dl class="first docutils">
+<dt>Text analysed with Pythons NLTK for sentiment using two dictionaries:</dt>
+<dd><ul class="first last simple">
+<li>Harvard IV-4</li>
+<li>Loughran and McDonald Financial Sentiment</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Polarity</strong> (P) is defined as:</p>
+<div class="math">
+\[P = \frac{N_{pos}-N_{neg}}{N_{pos}+N_{neg}}\]</div>
+<p><strong>Subjectivity</strong> (S) is defined as:</p>
+<div class="math">
+\[S = \frac{N_{pos}+N_{neg}}{N}\]</div>
+<p>With the Beige Book data set we get the following:</p>
+<a class="reference internal image-reference" href="../../../_images/beige_book_subjectivity.png"><img alt="../../../_images/beige_book_subjectivity.png" src="../../../_images/beige_book_subjectivity.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../../_images/beige_book_polarity.png"><img alt="../../../_images/beige_book_polarity.png" src="../../../_images/beige_book_polarity.png" style="width: 600px;" /></a>
+<p>From the above we can see the differences in the two dictionaries used to
+evaluate Sentiment. The Harvard IV-4 dictionary has no concept of financial
+lexicon whereas the Loughran and McDonald Financial Sentiment is calibrated
+from 10-K file date returns, post-file date returns, return volatility,
+allegations of accounting fraud, and company material weakness disclosures, and
+as such is more evenly weighted around 0 for Polarity.</p>
+<p>Comparing the Loughran and McDonald Financial Sentiment with T-Bill discount
+rates gives the following:</p>
+<a class="reference internal image-reference" href="../../../_images/beige_book_sentiment_tbill.png"><img alt="../../../_images/beige_book_sentiment_tbill.png" src="../../../_images/beige_book_sentiment_tbill.png" style="width: 600px;" /></a>
+<p>By inspection of the above it appears there is some causality/correlation
+between sentiment of the Beige Book and the T-bill discount rate. Soon i will
+publish statistical analysis of this causality (Granger or otherwise).</p>
+<p>For more info. on this experiment please get in touch, <a class="reference external" href="mailto:chris&#46;j&#46;morgan&#37;&#52;&#48;gmail&#46;com">chris<span>&#46;</span>j<span>&#46;</span>morgan<span>&#64;</span>gmail<span>&#46;</span>com</a>.</p>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<p>[1] J.R. Nofsinger, Social mood and financial economics, Journal of Behaviour
+Finance 6 (3) (2005) 144–160.</p>
+<p>[2] <a class="reference external" href="http://strata.oreilly.com/2011/05/sentiment-analysis-finance.html">http://strata.oreilly.com/2011/05/sentiment-analysis-finance.html</a></p>
+<p>[3] Johan Bollen, Huina Mao, Xiao-Jun Zeng: Twitter mood predicts the stock market.
+J. Comput. Science 2(1): 1-8 (2011)</p>
+</div>
+</div>
+
+    <div class="postmeta">
+        <div class="author">
+            <span>Posted by Chris Morgan</span>
+        </div>
+        
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="../../../tags/finance.html">finance</a>, <a href="../../../tags/research.html">research</a></span>
+        </div>
+        </div><ul class="related clearfix">
+            <li class="left"> &laquo; <a href="../18/hal_r_varian.html">Hal R. Varian</a></li>
+            <li class="right"><a href="../../01/13/remember_vim_folding.html">Remember Vim folding</a> &raquo; </li>
+        </ul><div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "Wachunga";    var disqus_identifier = "2014/02/06/beige_book_sentiment";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></article><aside class="sidebar"><section><div class="widget">
+    <h1>Recent Posts</h1>
+    <ul><li>
+            <a href="../18/hal_r_varian.html">Hal R. Varian</a>
+        </li><li>
+            <a href="#">Beige Book Sentiment</a>
+        </li><li>
+            <a href="../../01/13/remember_vim_folding.html">Remember Vim folding</a>
+        </li><li>
+            <a href="../../01/05/being_productive_with_ipython_notebooks.html">Being even more productive with IPython notebooks</a>
+        </li><li>
+            <a href="../../01/03/setup_matlab.html">Setting up MATLAB contexts</a>
+        </li><li>
+            <a href="../../../2013/05/01/common_operations_in_pandas.html">Common operations in Pandas</a>
+        </li><li>
+            <a href="../../../2013/04/12/ipython_notes.html">IPython notes</a>
+        </li></ul>
+</div>
+</section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2014, Chris Morgan. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
+</html>
