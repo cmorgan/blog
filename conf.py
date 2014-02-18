@@ -33,7 +33,7 @@ website = 'http://wachunga.com'
 disqus_shortname = 'Wachunga'
 
 # Change your favicon (new favicon goes in _static directory)
-html_favicon = 'favicon.ico'
+#html_favicon = 'favicon.ico'
 
 # Pick another Tinkerer theme or use your own
 html_theme = "flat"
