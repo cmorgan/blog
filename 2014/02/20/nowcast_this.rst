@@ -1,5 +1,5 @@
-Now-cast this
-=============
+Nowcast this
+============
 
 Nowcasting is a technique which has recently gained popularity in economics.
 Essentially low frequency economic variables are foretasted by a series of
