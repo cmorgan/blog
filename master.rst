@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2014/02/20/now_cast_this
    2014/02/18/hal_r_varian
    2014/02/06/beige_book_sentiment
    2014/01/13/remember_vim_folding
