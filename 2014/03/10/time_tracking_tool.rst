@@ -1,4 +1,4 @@
-time tracking tool
+Time tracking tool
 ==================
 
 Another working methodology post, in order to remind me of which tool I used.

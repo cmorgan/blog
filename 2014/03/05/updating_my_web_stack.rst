@@ -3,10 +3,10 @@ Updating my web design stack
 
 For data intensive and service related projects I always prefer to use the
 simplicity of `Tornado <http://www.tornadoweb.org/en/stable/>`_. Recently I had
-occasion to consider a more classic CMS type of applciation. I looked at Django
+occasion to consider a more classic CMS type of application. I looked at Django
 a number of years ago and was largely unimpressed, probably because the need at
 the time was not for a CMS platform and the design of the admin interface
-seemed a bit late 90's. 
+seemed a bit late 90's.
 
 My opinion has changed however with the `Wagtail
 <https://github.com/torchbox/wagtail>`_ project from Torchbox. Very nice design
