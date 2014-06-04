@@ -2,23 +2,251 @@
 <rss version="2.0">
     <channel>
         <title>Wachunga</title>
-        <link>http://127.0.0.1/</link>
+        <link>http://wachunga.com/</link>
         <description>Notes and ramblings on hacking and finance</description>
         <language>en-us</language>
-        <pubDate>Thu, 06 Feb 2014 00:00:00 +0000</pubDate>
+        <pubDate>Wed, 04 Jun 2014 00:00:00 +0100</pubDate>
         
         <item>
-            <link>http://127.0.0.1/2014/02/06/beige_book_sentiment.html</link>
-            <guid>http://127.0.0.1/2014/02/06/beige_book_sentiment.html</guid>
+            <link>http://wachunga.com/2014/06/04/add_flippa_auction_to_calendar.html</link>
+            <guid>http://wachunga.com/2014/06/04/add_flippa_auction_to_calendar.html</guid>
+            <title><![CDATA[Add Flippa auction to calendar]]></title>
+            <description><![CDATA[<div class="section" id="add-flippa-auction-to-calendar">
+<h1>Add Flippa auction to calendar</h1>
+<p>This is a nasty hack to add a link to Flippa which will put you on the road to
+adding an event to your Google Calendar at the auction end time.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">javascript</span><span class="o">:</span><span class="k">void</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span> <span class="s2">&quot;#auctionstatus&quot;</span> <span class="p">).</span><span class="nx">append</span><span class="p">(</span> <span class="s2">&quot;&lt;a href='&quot;</span> <span class="o">+</span> <span class="s2">&quot;http://google.co.uk/search?q=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span><span class="p">(</span><span class="s2">&quot;google calendar add &quot;</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#auctionstatus&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">).</span><span class="nx">substr</span><span class="p">(</span><span class="mi">41</span><span class="p">,</span> <span class="mi">19</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;'&gt;Add to calendar&lt;/a&gt;&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>]]></description>
+             <pubDate>Wed, 04 Jun 2014 00:00:00 +0100</pubDate>
+        </item>
+    
+        <item>
+            <link>http://wachunga.com/2014/03/10/time_tracking_tool.html</link>
+            <guid>http://wachunga.com/2014/03/10/time_tracking_tool.html</guid>
+            <title><![CDATA[Time tracking tool]]></title>
+            <description><![CDATA[<div class="section" id="time-tracking-tool">
+<h1>Time tracking tool</h1>
+<p>Another working methodology post, in order to remind me of which tool I used.
+In order to keep track of tasks and time spent when in the commandline (where I
+am most of the time) <a class="reference external" href="https://bitbucket.org/trevor/timebook/wiki/Home">TimeBook</a> is a great tool. It allows
+you do:</p>
+<div class="highlight-python"><div class="highlight"><pre>t in &quot;task i am working on&quot;
+&lt;do some work&gt;
+t out
+</pre></div>
+</div>
+<p>Then there will be an entry in your <cite>timesheet</cite> with today’s date and the time
+spent working on the task.</p>
+</div>]]></description>
+             <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+        </item>
+    
+        <item>
+            <link>http://wachunga.com/2014/03/05/updating_my_web_stack.html</link>
+            <guid>http://wachunga.com/2014/03/05/updating_my_web_stack.html</guid>
+            <title><![CDATA[Updating my web design stack]]></title>
+            <description><![CDATA[<div class="section" id="updating-my-web-design-stack">
+<h1>Updating my web design stack</h1>
+<p>For data intensive and service related projects I always prefer to use the
+simplicity of <a class="reference external" href="http://www.tornadoweb.org/en/stable">Tornado</a>. Recently I had
+occasion to consider a more classic CMS type of application. I looked at Django
+a number of years ago and was largely unimpressed, probably because the need at
+the time was not for a CMS platform and the design of the admin interface
+seemed a bit late 90’s.</p>
+<p>My opinion has changed however with the <a class="reference external" href="https://github.com/torchbox/wagtail">Wagtail</a> project from Torchbox. Very nice design
+and some of the key Django apps, like South, bundled in.</p>
+<p>Also, I have been impressed with the <a class="reference external" href="http://bower.io">Bower</a> project -
+which provides a package manager for front end components on <a class="reference external" href="http://nodejs.org">Node</a>.</p>
+<p>Anyway, to get these fancy Javascript tools working in a Python virtualenv do
+the following from within a virtualenv:</p>
+<div class="highlight-bash"><div class="highlight"><pre>pip install nodeenv
+nodeenv --python-virtualenv  <span class="c"># activate nodeenv in the current virtualenv</span>
+npm install -g bower
+</pre></div>
+</div>
+<p>Great!</p>
+</div>]]></description>
+             <pubDate>Wed, 05 Mar 2014 00:00:00 +0000</pubDate>
+        </item>
+    
+        <item>
+            <link>http://wachunga.com/2014/02/28/clojure_setup.html</link>
+            <guid>http://wachunga.com/2014/02/28/clojure_setup.html</guid>
+            <title><![CDATA[Clojure setup]]></title>
+            <description><![CDATA[<div class="section" id="clojure-setup">
+<h1>Clojure setup</h1>
+<p>I’m having lots of fun learning Clojure. There are a couple of decent ways to
+be productive in Vim with Clojure, described below:</p>
+<div class="section" id="vim-fireplace">
+<h2>Vim-Fireplace</h2>
+<p><a class="reference external" href="https://github.com/tpope/vim-fireplace">Vim-fireplace</a> connects to a Clojure
+REPL instance from within Vim.</p>
+<p>Some key commands:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%"/>
+<col width="84%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Function</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><cite>cpp</cite></td>
+<td>Execute the current form.</td>
+</tr>
+<tr class="row-odd"><td><cite>cpr</cite></td>
+<td>Reload the current file.</td>
+</tr>
+<tr class="row-even"><td><cite>K</cite></td>
+<td>Lookup help for command that the cursor is
+under.</td>
+</tr>
+<tr class="row-odd"><td><cite>[d</cite></td>
+<td>Lookup source that the command is under.</td>
+</tr>
+</tbody>
+</table>
+<p>It works well, but i need to figure out a way to ensure that the REPL buffer is
+always open as the popping open of the buffer grows old quickly.</p>
+</div>
+<div class="section" id="vim-slime">
+<h2>Vim-slime</h2>
+<p>A solution which uses the excellent Tmux is <a class="reference external" href="https://github.com/jpalardy/vim-slime">vim-slime</a>, a nice setup is described in this
+<a class="reference external" href="http://michaelalynmiller.com/blog/2013/02/27/vim-tmux-clojure">blog</a>. It
+works with any REPL. In brief you open a Clojure REPL in a Tmux window and tell
+Vim to send highlighted lines. It’s good as the REPL window remains open
+showing the command execution history.</p>
+<p>Some key commands:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%"/>
+<col width="56%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Function</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><cite>C-c, C-c</cite></td>
+<td>Send line to Tmux window with REPL.</td>
+</tr>
+<tr class="row-odd"><td><cite>&lt;highlight lines&gt; C-c, C-c</cite></td>
+<td>Send line to Tmux window with REPL.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion</h2>
+<p>A combination of both of the above works really well. I use Vim-Fireplace in
+order to get contextual help and Vim-slime to execute code. Once i figure out
+how to have a consistent buffer open in vim-fireplace then i guess i’ll ditch
+vim-slime.</p>
+</div>
+</div>]]></description>
+             <pubDate>Fri, 28 Feb 2014 00:00:00 +0000</pubDate>
+        </item>
+    
+        <item>
+            <link>http://wachunga.com/2014/02/20/nowcast_this.html</link>
+            <guid>http://wachunga.com/2014/02/20/nowcast_this.html</guid>
+            <title><![CDATA[Nowcast this]]></title>
+            <description><![CDATA[<div class="section" id="nowcast-this">
+<h1>Nowcast this</h1>
+<p>Nowcasting is a technique which has recently gained popularity in economics.
+Essentially low frequency economic variables are foretasted by a series of
+higher frequency variables in state space. The canonical example is that of
+predicting GDP figures (low frequency of data release) from higher frequency
+variables such as jobless figures, industrial orders and trade balance.</p>
+<p>Such a model can be written as a system of two equations:</p>
+<ul>
+<li><p class="first">measurement equations linking observed series to latent variable (or state
+process)</p>
+<blockquote>
+<div><div class="math">
+\[Y_t^{K_Y} = \mu + \zeta(\Theta)X_t + G_t\]</div>
+</div></blockquote>
+</li>
+<li><p class="first">transistion equations describing the state process dynamics</p>
+<blockquote>
+<div><div class="math">
+\[X_t = \phi(\Theta)X_{t-1} + H_t\]</div>
+</div></blockquote>
+</li>
+</ul>
+<p>where in the above equations <span class="math">\(Y_t^{K_Y}\)</span> is the vector of observed
+variables and <span class="math">\(X_t\)</span> is the unobserved state variables, the dynamics of
+which are explained by the transition equation.</p>
+<p><span class="math">\(G_t\)</span> and <span class="math">\(H_t\)</span> represent covariance matrices of the disturbances
+and <span class="math">\(\phi(\Theta)\)</span> and <span class="math">\(\zeta(\Theta)\)</span> represent matrices of the
+coefficients. The covariance matrices are determined from an iterative
+Expectation-Maiximisation algorithm.</p>
+<p>As the model is in state-space we can now gain projections for both the
+observed and the predicted variables using the Kalman filter, as well as
+allowing us to have missing variables in our series.</p>
+<p>It’s an interesting approach as the forecast for the low-frequency variable
+gets progressively more accurate as more data is released as we move closer to
+the announcement date. This means that there is a <cite>news</cite> component or
+“unexpected” component which we obtain from the model as the long-term (or
+indeed short-term) variables have their forecast updated, which is could be a
+useful signal.</p>
+<p>A <a class="reference external" href="http://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1564.pdf">paper</a> by Marta Bańbura, Domenico Giannone, Michele Modugno and Lucrezia
+Reichlin reviewing the approaches can be found on the ECB website.</p>
+</div>]]></description>
+             <pubDate>Thu, 20 Feb 2014 00:00:00 +0000</pubDate>
+        </item>
+    
+        <item>
+            <link>http://wachunga.com/2014/02/18/hal_r_varian.html</link>
+            <guid>http://wachunga.com/2014/02/18/hal_r_varian.html</guid>
+            <title><![CDATA[Hal R. Varian]]></title>
+            <description><![CDATA[<div class="section" id="hal-r-varian">
+<h1>Hal R. Varian</h1>
+<p>In my quest to keep upto date with the big ideas in econometrics and finance I
+happened upon Hal R. Varian. Hal is both a professor at UC Berkley and also
+Chief Economist at Google, a couple of impressive positions held simultaneously
+positions held simultaneously.</p>
+<p>There is a trove of Hal’s essays and papers available <a class="reference external" href="http://people.ischool.berkeley.edu/~hal/people/hal/papers.html">here</a>, I
+particularly enjoyed his <a class="reference external" href="http://people.ischool.berkeley.edu/~hal/Papers/2013/BeyondBigDataPaperFINAL.pdf">comment on big data in economics</a>
+which essentially espouses economists to not only analyse the electronic data
+that pretty much any firm is amassing but also to perform experiments within
+the bounds of the collection system, giving rise to similar advances as have
+been gained from similar methods applied to e-marketing (see <a class="reference external" href="http://www.kalzumeus.com/greatest-hits">Patrick McKenzie’s
+essays</a> for more).</p>
+<p>Another paper of note was <a class="reference external" href="http://people.ischool.berkeley.edu/~hal/Papers/2013/pred-present-with-bsts.pdf">Predicting the Present with Bayesian Strucural Time
+Series</a>
+(or see the <a class="reference external" href="http://people.ischool.berkeley.edu/~hal/Papers/2012/fat-talk.pdf">slides</a> for an
+abbreviated view) in which is described a system for economic nowcasting using
+a system where terms correlated to an economic variable e.g. claims for
+unemployment, are discovered with Google Correlate and then Google Trends
+data for those terms is analysed and ranked in terms of predictability using a
+Markov chain Monte Carlo (MCMC) algorithm - interesting!</p>
+</div>]]></description>
+             <pubDate>Tue, 18 Feb 2014 00:00:00 +0000</pubDate>
+        </item>
+    
+        <item>
+            <link>http://wachunga.com/2014/02/06/beige_book_sentiment.html</link>
+            <guid>http://wachunga.com/2014/02/06/beige_book_sentiment.html</guid>
             <title><![CDATA[Beige Book Sentiment]]></title>
             <description><![CDATA[<div class="section" id="beige-book-sentiment">
 <h1>Beige Book Sentiment</h1>
+<div class="figure align-center">
+<img alt="../../../_images/beige_book_word_cloud.png" src="http://wachunga.com/_images/beige_book_word_cloud.png"/>
+<p class="caption">Word cloud showing relative frequencies of words in all Beige Books since
+1970</p>
+</div>
 <div class="section" id="why">
 <h2>Why?</h2>
-<p>Behvioural finance has provided proof that financial decisions are
+<p>Behavioural finance has provided proof that financial decisions are
 significantly driven by emotion and mood [1].</p>
 <p>Therefore if we can gauge the mood of policy makers, perhaps we can gauge
-policy decison.</p>
+policy decision.</p>
 <p>Rochester Cahan, VP of Global Equity Quantitative Strategy at Deutsche Bank,
 states that the sentiment scores of Thomson Reuters (powered by Lexalytics) are
 uncorrelated with traditional quantitative signals [2].</p>
@@ -26,8 +254,8 @@ uncorrelated with traditional quantitative signals [2].</p>
 <div class="section" id="commercial-products-and-funds">
 <h2>Commercial Products and Funds</h2>
 <p>There are a number of commercial products and funds already providing or
-exploting sentiment based signals.</p>
-<p>Thompson Reuters recently aquired <a class="reference external" href="http://www.lexalytics.com">Lexalytics</a>
+exploiting sentiment based signals.</p>
+<p>Thompson Reuters recently acquired <a class="reference external" href="http://www.lexalytics.com">Lexalytics</a>
 who provide sentiment indicators in machine readable format. Global sentiment
 indicators are also provided by <a class="reference external" href="https://ww.marketpsych.com">MarketPsych</a>, a
 spin off company from the now closed MarketPsych Captial fund setup by <a class="reference external" href="http://www.richard.peterson.net">Richard
@@ -39,16 +267,16 @@ use case of sentiment analysis. Founded by Paul Hawtin in 2013 the fund works
 closely with the team behind the paper <a class="reference external" href="http://arxiv.org/pdf/1010.3003&amp;">Twitter Mood Predicts the Stock Market
 (pre-print)</a> [3] in order to gauge the
 entire Twitter verse in terms of 6 different moods: calm, alert, sure, vital,
-kind, happy. They found that predominatly only the calm mood was Granger
+kind, happy. They found that predominately only the calm mood was Granger
 causative with DJIA.</p>
 </div>
 <div class="section" id="sentiment-from-the-beige-book">
 <h2>Sentiment from the Beige Book</h2>
 <ul class="simple">
-<li>Beige Book content downloaded programmatically since 1970.</li>
+<li>Beige Book content downloaded pro programmatically since 1970.</li>
 <li>Text cleaned and put into common format.</li>
 </ul>
-<a class="reference internal image-reference" href="http://127.0.0.1/_images/beige_book_words.png"><img alt="../../../_images/beige_book_words.png" src="http://127.0.0.1/_images/beige_book_words.png" style="width: 600px;"/></a>
+<a class="reference internal image-reference" href="http://wachunga.com/_images/beige_book_words.png"><img alt="../../../_images/beige_book_words.png" src="http://wachunga.com/_images/beige_book_words.png" style="width: 600px;"/></a>
 <ul>
 <li><dl class="first docutils">
 <dt>Text analysed with Pythons NLTK for sentiment using two dictionaries:</dt>
@@ -67,8 +295,8 @@ causative with DJIA.</p>
 <div class="math">
 \[S = \frac{N_{pos}+N_{neg}}{N}\]</div>
 <p>With the Beige Book data set we get the following:</p>
-<a class="reference internal image-reference" href="http://127.0.0.1/_images/beige_book_subjectivity.png"><img alt="../../../_images/beige_book_subjectivity.png" src="http://127.0.0.1/_images/beige_book_subjectivity.png" style="width: 600px;"/></a>
-<a class="reference internal image-reference" href="http://127.0.0.1/_images/beige_book_polarity.png"><img alt="../../../_images/beige_book_polarity.png" src="http://127.0.0.1/_images/beige_book_polarity.png" style="width: 600px;"/></a>
+<a class="reference internal image-reference" href="http://wachunga.com/_images/beige_book_subjectivity.png"><img alt="../../../_images/beige_book_subjectivity.png" src="http://wachunga.com/_images/beige_book_subjectivity.png" style="width: 600px;"/></a>
+<a class="reference internal image-reference" href="http://wachunga.com/_images/beige_book_polarity.png"><img alt="../../../_images/beige_book_polarity.png" src="http://wachunga.com/_images/beige_book_polarity.png" style="width: 600px;"/></a>
 <p>From the above we can see the differences in the two dictionaries used to
 evaluate Sentiment. The Harvard IV-4 dictionary has no concept of financial
 lexicon whereas the Loughran and McDonald Financial Sentiment is calibrated
@@ -77,19 +305,27 @@ allegations of accounting fraud, and company material weakness disclosures, and
 as such is more evenly weighted around 0 for Polarity.</p>
 <p>Comparing the Loughran and McDonald Financial Sentiment with T-Bill discount
 rates gives the following:</p>
-<a class="reference internal image-reference" href="http://127.0.0.1/_images/beige_book_sentiment_tbill.png"><img alt="../../../_images/beige_book_sentiment_tbill.png" src="http://127.0.0.1/_images/beige_book_sentiment_tbill.png" style="width: 600px;"/></a>
+<a class="reference internal image-reference" href="http://wachunga.com/_images/beige_book_sentiment_tbill.png"><img alt="../../../_images/beige_book_sentiment_tbill.png" src="http://wachunga.com/_images/beige_book_sentiment_tbill.png" style="width: 600px;"/></a>
 <p>By inspection of the above it appears there is some causality/correlation
 between sentiment of the Beige Book and the T-bill discount rate. Soon i will
 publish statistical analysis of this causality (Granger or otherwise).</p>
 <p>For more info. on this experiment please get in touch, <a class="reference external" href="mailto:chris.j.morgan%40gmail.com">chris<span>.</span>j<span>.</span>morgan<span>@</span>gmail<span>.</span>com</a>.</p>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<p>[1] J.R. Nofsinger, Social mood and financial economics, Journal of Behaviour
+Finance 6 (3) (2005) 144–160.</p>
+<p>[2] <a class="reference external" href="http://strata.oreilly.com/2011/05/sentiment-analysis-finance.html">http://strata.oreilly.com/2011/05/sentiment-analysis-finance.html</a></p>
+<p>[3] Johan Bollen, Huina Mao, Xiao-Jun Zeng: Twitter mood predicts the stock market.
+J. Comput. Science 2(1): 1-8 (2011)</p>
 </div>
 </div>]]></description>
              <pubDate>Thu, 06 Feb 2014 00:00:00 +0000</pubDate>
         </item>
     
         <item>
-            <link>http://127.0.0.1/2014/01/13/remember_vim_folding.html</link>
-            <guid>http://127.0.0.1/2014/01/13/remember_vim_folding.html</guid>
+            <link>http://wachunga.com/2014/01/13/remember_vim_folding.html</link>
+            <guid>http://wachunga.com/2014/01/13/remember_vim_folding.html</guid>
             <title><![CDATA[Remember Vim folding]]></title>
             <description><![CDATA[<div class="section" id="remember-vim-folding">
 <h1>Remember Vim folding</h1>
@@ -145,8 +381,8 @@ nnoremap &lt;C-f&gt; zM
         </item>
     
         <item>
-            <link>http://127.0.0.1/2014/01/05/being_productive_with_ipython_notebooks.html</link>
-            <guid>http://127.0.0.1/2014/01/05/being_productive_with_ipython_notebooks.html</guid>
+            <link>http://wachunga.com/2014/01/05/being_productive_with_ipython_notebooks.html</link>
+            <guid>http://wachunga.com/2014/01/05/being_productive_with_ipython_notebooks.html</guid>
             <title><![CDATA[Being even more productive with IPython notebooks]]></title>
             <description><![CDATA[<div class="section" id="being-even-more-productive-with-ipython-notebooks">
 <h1>Being even more productive with IPython notebooks</h1>
@@ -170,7 +406,7 @@ correctly:</p>
 </div>
 <div class="section" id="git">
 <h2>Git</h2>
-<p>The JSON format of IPython notebooks is create, however there is no need to save Base64 encoded binary data in Git. We can strip out the binary blobs with Git filters.  Add the following somewhere on your path: <a class="reference external" href="https://github.com/cfriedline/ipynb_template/blob/master/nbstripout">https://github.com/cfriedline/ipynb_template/blob/master/nbstripout</a>, then add the following in <span class="docutils literal"><span class="pre">.git/config</span></span>:</p>
+<p>The JSON format of IPython notebooks is great, however there is no need to save Base64 encoded binary data in Git. We can strip out the binary blobs with Git filters.  Add the following somewhere on your path: <a class="reference external" href="https://github.com/cfriedline/ipynb_template/blob/master/nbstripout">https://github.com/cfriedline/ipynb_template/blob/master/nbstripout</a>, then add the following in <span class="docutils literal"><span class="pre">.git/config</span></span>:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="o">[</span>filter <span class="s2">&quot;stripoutput&quot;</span><span class="o">]</span>
     <span class="nv">clean</span> <span class="o">=</span> <span class="s2">&quot;/path/to/nbstripout&quot;</span>
 </pre></div>
@@ -186,8 +422,8 @@ correctly:</p>
         </item>
     
         <item>
-            <link>http://127.0.0.1/2014/01/03/setup_matlab.html</link>
-            <guid>http://127.0.0.1/2014/01/03/setup_matlab.html</guid>
+            <link>http://wachunga.com/2014/01/03/setup_matlab.html</link>
+            <guid>http://wachunga.com/2014/01/03/setup_matlab.html</guid>
             <title><![CDATA[Setting up MATLAB contexts]]></title>
             <description><![CDATA[<div class="section" id="setting-up-matlab-contexts">
 <h1>Setting up MATLAB contexts</h1>
@@ -225,8 +461,8 @@ directories and the like.</p>
         </item>
     
         <item>
-            <link>http://127.0.0.1/2013/05/01/common_operations_in_pandas.html</link>
-            <guid>http://127.0.0.1/2013/05/01/common_operations_in_pandas.html</guid>
+            <link>http://wachunga.com/2013/05/01/common_operations_in_pandas.html</link>
+            <guid>http://wachunga.com/2013/05/01/common_operations_in_pandas.html</guid>
             <title><![CDATA[Common operations in Pandas]]></title>
             <description><![CDATA[<div class="section" id="common-operations-in-pandas">
 <h1>Common operations in Pandas</h1>
@@ -487,8 +723,8 @@ which are nonzero.</li>
         </item>
     
         <item>
-            <link>http://127.0.0.1/2013/04/12/ipython_notes.html</link>
-            <guid>http://127.0.0.1/2013/04/12/ipython_notes.html</guid>
+            <link>http://wachunga.com/2013/04/12/ipython_notes.html</link>
+            <guid>http://wachunga.com/2013/04/12/ipython_notes.html</guid>
             <title><![CDATA[IPython notes]]></title>
             <description><![CDATA[<div class="section" id="ipython-notes">
 <h1>IPython notes</h1>

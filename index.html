@@ -13,7 +13,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="description" content="Notes and meditations">
+        <meta name="description" content="Notes and ramblings on hacking and finance">
         <meta name="viewport" content="width=device-width">
         <title>Home &mdash; Wachunga</title>
             <link rel="stylesheet" href="_static/normalize.css" type="text/css">
@@ -22,13 +22,13 @@
             <link rel="stylesheet" href="_static/flat.css" type="text/css">
             <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
             <link rel="stylesheet" href="_static/webfont.css" type="text/css">
-        <link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <!-- Load modernizr and JQuery -->
         <script src="_static/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="_static/plugins.js"></script>
         <script src="_static/main.js"></script>
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+        <link rel="next" title="Older" href="page2.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '1.3.0',
@@ -36,7 +36,7 @@
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
-    </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="_static/disqus.js"></script><script type="text/javascript" src="_static/google_analytics.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -65,16 +65,288 @@
                 </li>
               </ul>
           </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
+            <span>June 04, 2014</span>
+        </div>
+        <div class="section" id="add-flippa-auction-to-calendar">
+<h1><a href="2014/06/04/add_flippa_auction_to_calendar.html">Add Flippa auction to calendar</a></h1>
+<p>This is a nasty hack to add a link to Flippa which will put you on the road to
+adding an event to your Google Calendar at the auction end time.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">javascript</span><span class="o">:</span><span class="k">void</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span> <span class="s2">&quot;#auctionstatus&quot;</span> <span class="p">).</span><span class="nx">append</span><span class="p">(</span> <span class="s2">&quot;&lt;a href='&quot;</span> <span class="o">+</span> <span class="s2">&quot;http://google.co.uk/search?q=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span><span class="p">(</span><span class="s2">&quot;google calendar add &quot;</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#auctionstatus&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">).</span><span class="nx">substr</span><span class="p">(</span><span class="mi">41</span><span class="p">,</span> <span class="mi">19</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;'&gt;Add to calendar&lt;/a&gt;&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Chris Morgan</span>
+        </div>
+        
+        
+        <div class="comments">
+            <a href="http://wachunga.com/2014/06/04/add_flippa_auction_to_calendar.html#disqus_thread" data-disqus-identifier="2014/06/04/add_flippa_auction_to_calendar">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>March 10, 2014</span>
+        </div>
+        <div class="section" id="time-tracking-tool">
+<h1><a href="2014/03/10/time_tracking_tool.html">Time tracking tool</a></h1>
+<p>Another working methodology post, in order to remind me of which tool I used.
+In order to keep track of tasks and time spent when in the commandline (where I
+am most of the time) <a class="reference external" href="https://bitbucket.org/trevor/timebook/wiki/Home">TimeBook</a> is a great tool. It allows
+you do:</p>
+<div class="highlight-python"><div class="highlight"><pre>t in &quot;task i am working on&quot;
+&lt;do some work&gt;
+t out
+</pre></div>
+</div>
+<p>Then there will be an entry in your <cite>timesheet</cite> with today’s date and the time
+spent working on the task.</p>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Chris Morgan</span>
+        </div>
+        
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/tools.html">tools</a></span>
+        </div>
+        <div class="comments">
+            <a href="http://wachunga.com/2014/03/10/time_tracking_tool.html#disqus_thread" data-disqus-identifier="2014/03/10/time_tracking_tool">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>March 05, 2014</span>
+        </div>
+        <div class="section" id="updating-my-web-design-stack">
+<h1><a href="2014/03/05/updating_my_web_stack.html">Updating my web design stack</a></h1>
+<p>For data intensive and service related projects I always prefer to use the
+simplicity of <a class="reference external" href="http://www.tornadoweb.org/en/stable">Tornado</a>. Recently I had
+occasion to consider a more classic CMS type of application. I looked at Django
+a number of years ago and was largely unimpressed, probably because the need at
+the time was not for a CMS platform and the design of the admin interface
+seemed a bit late 90’s.</p>
+<p>My opinion has changed however with the <a class="reference external" href="https://github.com/torchbox/wagtail">Wagtail</a> project from Torchbox. Very nice design
+and some of the key Django apps, like South, bundled in.</p>
+<p>Also, I have been impressed with the <a class="reference external" href="http://bower.io">Bower</a> project -
+which provides a package manager for front end components on <a class="reference external" href="http://nodejs.org">Node</a>.</p>
+<p>Anyway, to get these fancy Javascript tools working in a Python virtualenv do
+the following from within a virtualenv:</p>
+<div class="highlight-bash"><div class="highlight"><pre>pip install nodeenv
+nodeenv --python-virtualenv  <span class="c"># activate nodeenv in the current virtualenv</span>
+npm install -g bower
+</pre></div>
+</div>
+<p>Great!</p>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Chris Morgan</span>
+        </div>
+        
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/tools.html">tools</a></span>
+        </div>
+        <div class="comments">
+            <a href="http://wachunga.com/2014/03/05/updating_my_web_stack.html#disqus_thread" data-disqus-identifier="2014/03/05/updating_my_web_stack">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>February 28, 2014</span>
+        </div>
+        <div class="section" id="clojure-setup">
+<h1><a href="2014/02/28/clojure_setup.html">Clojure setup</a></h1>
+<p>I’m having lots of fun learning Clojure. There are a couple of decent ways to
+be productive in Vim with Clojure, described below:</p>
+<div class="section" id="vim-fireplace">
+<h2>Vim-Fireplace</h2>
+<p><a class="reference external" href="https://github.com/tpope/vim-fireplace">Vim-fireplace</a> connects to a Clojure
+REPL instance from within Vim.</p>
+<p>Some key commands:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%"/>
+<col width="84%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Function</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><cite>cpp</cite></td>
+<td>Execute the current form.</td>
+</tr>
+<tr class="row-odd"><td><cite>cpr</cite></td>
+<td>Reload the current file.</td>
+</tr>
+<tr class="row-even"><td><cite>K</cite></td>
+<td>Lookup help for command that the cursor is
+under.</td>
+</tr>
+<tr class="row-odd"><td><cite>[d</cite></td>
+<td>Lookup source that the command is under.</td>
+</tr>
+</tbody>
+</table>
+<p>It works well, but i need to figure out a way to ensure that the REPL buffer is
+always open as the popping open of the buffer grows old quickly.</p>
+</div>
+<div class="section" id="vim-slime">
+<h2>Vim-slime</h2>
+<p>A solution which uses the excellent Tmux is <a class="reference external" href="https://github.com/jpalardy/vim-slime">vim-slime</a>, a nice setup is described in this
+<a class="reference external" href="http://michaelalynmiller.com/blog/2013/02/27/vim-tmux-clojure">blog</a>. It
+works with any REPL. In brief you open a Clojure REPL in a Tmux window and tell
+Vim to send highlighted lines. It’s good as the REPL window remains open
+showing the command execution history.</p>
+<p>Some key commands:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%"/>
+<col width="56%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Function</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><cite>C-c, C-c</cite></td>
+<td>Send line to Tmux window with REPL.</td>
+</tr>
+<tr class="row-odd"><td><cite>&lt;highlight lines&gt; C-c, C-c</cite></td>
+<td>Send line to Tmux window with REPL.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion</h2>
+<p>A combination of both of the above works really well. I use Vim-Fireplace in
+order to get contextual help and Vim-slime to execute code. Once i figure out
+how to have a consistent buffer open in vim-fireplace then i guess i’ll ditch
+vim-slime.</p>
+</div>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Chris Morgan</span>
+        </div>
+        
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/toosl.html">toosl</a>, <a href="tags/clojure.html">clojure</a></span>
+        </div>
+        <div class="comments">
+            <a href="http://wachunga.com/2014/02/28/clojure_setup.html#disqus_thread" data-disqus-identifier="2014/02/28/clojure_setup">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>February 20, 2014</span>
+        </div>
+        <div class="section" id="nowcast-this">
+<h1><a href="2014/02/20/nowcast_this.html">Nowcast this</a></h1>
+<p>Nowcasting is a technique which has recently gained popularity in economics.
+Essentially low frequency economic variables are foretasted by a series of
+higher frequency variables in state space. The canonical example is that of
+predicting GDP figures (low frequency of data release) from higher frequency
+variables such as jobless figures, industrial orders and trade balance.</p>
+<p>Such a model can be written as a system of two equations:</p>
+<ul>
+<li><p class="first">measurement equations linking observed series to latent variable (or state
+process)</p>
+<blockquote>
+<div><div class="math">
+\[Y_t^{K_Y} = \mu + \zeta(\Theta)X_t + G_t\]</div>
+</div></blockquote>
+</li>
+<li><p class="first">transistion equations describing the state process dynamics</p>
+<blockquote>
+<div><div class="math">
+\[X_t = \phi(\Theta)X_{t-1} + H_t\]</div>
+</div></blockquote>
+</li>
+</ul>
+<p>where in the above equations <span class="math">\(Y_t^{K_Y}\)</span> is the vector of observed
+variables and <span class="math">\(X_t\)</span> is the unobserved state variables, the dynamics of
+which are explained by the transition equation.</p>
+<p><span class="math">\(G_t\)</span> and <span class="math">\(H_t\)</span> represent covariance matrices of the disturbances
+and <span class="math">\(\phi(\Theta)\)</span> and <span class="math">\(\zeta(\Theta)\)</span> represent matrices of the
+coefficients. The covariance matrices are determined from an iterative
+Expectation-Maiximisation algorithm.</p>
+<p>As the model is in state-space we can now gain projections for both the
+observed and the predicted variables using the Kalman filter, as well as
+allowing us to have missing variables in our series.</p>
+<p>It’s an interesting approach as the forecast for the low-frequency variable
+gets progressively more accurate as more data is released as we move closer to
+the announcement date. This means that there is a <cite>news</cite> component or
+“unexpected” component which we obtain from the model as the long-term (or
+indeed short-term) variables have their forecast updated, which is could be a
+useful signal.</p>
+<p>A <a class="reference external" href="http://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1564.pdf">paper</a> by Marta Bańbura, Domenico Giannone, Michele Modugno and Lucrezia
+Reichlin reviewing the approaches can be found on the ECB website.</p>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Chris Morgan</span>
+        </div>
+        
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/research.html">research</a></span>
+        </div>
+        <div class="comments">
+            <a href="http://wachunga.com/2014/02/20/nowcast_this.html#disqus_thread" data-disqus-identifier="2014/02/20/nowcast_this">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>February 18, 2014</span>
+        </div>
+        <div class="section" id="hal-r-varian">
+<h1><a href="2014/02/18/hal_r_varian.html">Hal R. Varian</a></h1>
+<p>In my quest to keep upto date with the big ideas in econometrics and finance I
+happened upon Hal R. Varian. Hal is both a professor at UC Berkley and also
+Chief Economist at Google, a couple of impressive positions held simultaneously
+positions held simultaneously.</p>
+<p>There is a trove of Hal’s essays and papers available <a class="reference external" href="http://people.ischool.berkeley.edu/~hal/people/hal/papers.html">here</a>, I
+particularly enjoyed his <a class="reference external" href="http://people.ischool.berkeley.edu/~hal/Papers/2013/BeyondBigDataPaperFINAL.pdf">comment on big data in economics</a>
+which essentially espouses economists to not only analyse the electronic data
+that pretty much any firm is amassing but also to perform experiments within
+the bounds of the collection system, giving rise to similar advances as have
+been gained from similar methods applied to e-marketing (see <a class="reference external" href="http://www.kalzumeus.com/greatest-hits">Patrick McKenzie’s
+essays</a> for more).</p>
+<p>Another paper of note was <a class="reference external" href="http://people.ischool.berkeley.edu/~hal/Papers/2013/pred-present-with-bsts.pdf">Predicting the Present with Bayesian Strucural Time
+Series</a>
+(or see the <a class="reference external" href="http://people.ischool.berkeley.edu/~hal/Papers/2012/fat-talk.pdf">slides</a> for an
+abbreviated view) in which is described a system for economic nowcasting using
+a system where terms correlated to an economic variable e.g. claims for
+unemployment, are discovered with Google Correlate and then Google Trends
+data for those terms is analysed and ranked in terms of predictability using a
+Markov chain Monte Carlo (MCMC) algorithm - interesting!</p>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Chris Morgan</span>
+        </div>
+        
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/people.html">people</a></span>
+        </div>
+        <div class="comments">
+            <a href="http://wachunga.com/2014/02/18/hal_r_varian.html#disqus_thread" data-disqus-identifier="2014/02/18/hal_r_varian">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>February 06, 2014</span>
         </div>
         <div class="section" id="beige-book-sentiment">
 <h1><a href="2014/02/06/beige_book_sentiment.html">Beige Book Sentiment</a></h1>
+<div class="figure align-center">
+<img alt="../../../_images/beige_book_word_cloud.png" src="_images/beige_book_word_cloud.png"/>
+<p class="caption">Word cloud showing relative frequencies of words in all Beige Books since
+1970</p>
+</div>
 <div class="section" id="why">
 <h2>Why?</h2>
-<p>Behvioural finance has provided proof that financial decisions are
+<p>Behavioural finance has provided proof that financial decisions are
 significantly driven by emotion and mood [1].</p>
 <p>Therefore if we can gauge the mood of policy makers, perhaps we can gauge
-policy decison.</p>
+policy decision.</p>
 <p>Rochester Cahan, VP of Global Equity Quantitative Strategy at Deutsche Bank,
 states that the sentiment scores of Thomson Reuters (powered by Lexalytics) are
 uncorrelated with traditional quantitative signals [2].</p>
@@ -82,8 +354,8 @@ uncorrelated with traditional quantitative signals [2].</p>
 <div class="section" id="commercial-products-and-funds">
 <h2>Commercial Products and Funds</h2>
 <p>There are a number of commercial products and funds already providing or
-exploting sentiment based signals.</p>
-<p>Thompson Reuters recently aquired <a class="reference external" href="http://www.lexalytics.com">Lexalytics</a>
+exploiting sentiment based signals.</p>
+<p>Thompson Reuters recently acquired <a class="reference external" href="http://www.lexalytics.com">Lexalytics</a>
 who provide sentiment indicators in machine readable format. Global sentiment
 indicators are also provided by <a class="reference external" href="https://ww.marketpsych.com">MarketPsych</a>, a
 spin off company from the now closed MarketPsych Captial fund setup by <a class="reference external" href="http://www.richard.peterson.net">Richard
@@ -95,13 +367,13 @@ use case of sentiment analysis. Founded by Paul Hawtin in 2013 the fund works
 closely with the team behind the paper <a class="reference external" href="http://arxiv.org/pdf/1010.3003&amp;">Twitter Mood Predicts the Stock Market
 (pre-print)</a> [3] in order to gauge the
 entire Twitter verse in terms of 6 different moods: calm, alert, sure, vital,
-kind, happy. They found that predominatly only the calm mood was Granger
+kind, happy. They found that predominately only the calm mood was Granger
 causative with DJIA.</p>
 </div>
 <div class="section" id="sentiment-from-the-beige-book">
 <h2>Sentiment from the Beige Book</h2>
 <ul class="simple">
-<li>Beige Book content downloaded programmatically since 1970.</li>
+<li>Beige Book content downloaded pro programmatically since 1970.</li>
 <li>Text cleaned and put into common format.</li>
 </ul>
 <a class="reference internal image-reference" href="_images/beige_book_words.png"><img alt="../../../_images/beige_book_words.png" src="_images/beige_book_words.png" style="width: 600px;"/></a>
@@ -139,6 +411,14 @@ between sentiment of the Beige Book and the T-bill discount rate. Soon i will
 publish statistical analysis of this causality (Granger or otherwise).</p>
 <p>For more info. on this experiment please get in touch, <a class="reference external" href="mailto:chris.j.morgan%40gmail.com">chris<span>.</span>j<span>.</span>morgan<span>@</span>gmail<span>.</span>com</a>.</p>
 </div>
+<div class="section" id="references">
+<h2>References</h2>
+<p>[1] J.R. Nofsinger, Social mood and financial economics, Journal of Behaviour
+Finance 6 (3) (2005) 144–160.</p>
+<p>[2] <a class="reference external" href="http://strata.oreilly.com/2011/05/sentiment-analysis-finance.html">http://strata.oreilly.com/2011/05/sentiment-analysis-finance.html</a></p>
+<p>[3] Johan Bollen, Huina Mao, Xiao-Jun Zeng: Twitter mood predicts the stock market.
+J. Comput. Science 2(1): 1-8 (2011)</p>
+</div>
 </div>
         <div class="postmeta">
         <div class="author">
@@ -150,7 +430,9 @@ publish statistical analysis of this causality (Granger or otherwise).</p>
                 Tags:
                 <a href="tags/finance.html">finance</a>, <a href="tags/research.html">research</a></span>
         </div>
-        </div><div class="separator post_separator"></div><div class="timestamp postmeta">
+        <div class="comments">
+            <a href="http://wachunga.com/2014/02/06/beige_book_sentiment.html#disqus_thread" data-disqus-identifier="2014/02/06/beige_book_sentiment">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>January 13, 2014</span>
         </div>
         <div class="section" id="remember-vim-folding">
@@ -209,7 +491,9 @@ nnoremap &lt;C-f&gt; zM
         </div>
         
         
-        </div><div class="separator post_separator"></div><div class="timestamp postmeta">
+        <div class="comments">
+            <a href="http://wachunga.com/2014/01/13/remember_vim_folding.html#disqus_thread" data-disqus-identifier="2014/01/13/remember_vim_folding">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>January 05, 2014</span>
         </div>
         <div class="section" id="being-even-more-productive-with-ipython-notebooks">
@@ -234,7 +518,7 @@ correctly:</p>
 </div>
 <div class="section" id="git">
 <h2>Git</h2>
-<p>The JSON format of IPython notebooks is create, however there is no need to save Base64 encoded binary data in Git. We can strip out the binary blobs with Git filters.  Add the following somewhere on your path: <a class="reference external" href="https://github.com/cfriedline/ipynb_template/blob/master/nbstripout">https://github.com/cfriedline/ipynb_template/blob/master/nbstripout</a>, then add the following in <span class="docutils literal"><span class="pre">.git/config</span></span>:</p>
+<p>The JSON format of IPython notebooks is great, however there is no need to save Base64 encoded binary data in Git. We can strip out the binary blobs with Git filters.  Add the following somewhere on your path: <a class="reference external" href="https://github.com/cfriedline/ipynb_template/blob/master/nbstripout">https://github.com/cfriedline/ipynb_template/blob/master/nbstripout</a>, then add the following in <span class="docutils literal"><span class="pre">.git/config</span></span>:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="o">[</span>filter <span class="s2">&quot;stripoutput&quot;</span><span class="o">]</span>
     <span class="nv">clean</span> <span class="o">=</span> <span class="s2">&quot;/path/to/nbstripout&quot;</span>
 </pre></div>
@@ -256,7 +540,9 @@ correctly:</p>
                 Tags:
                 <a href="tags/tools.html">tools</a>, <a href="tags/python.html">python</a></span>
         </div>
-        </div><div class="separator post_separator"></div><div class="timestamp postmeta">
+        <div class="comments">
+            <a href="http://wachunga.com/2014/01/05/being_productive_with_ipython_notebooks.html#disqus_thread" data-disqus-identifier="2014/01/05/being_productive_with_ipython_notebooks">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>January 03, 2014</span>
         </div>
         <div class="section" id="setting-up-matlab-contexts">
@@ -301,316 +587,28 @@ directories and the like.</p>
                 Tags:
                 <a href="tags/matlab.html">matlab</a>, <a href="tags/tools.html">tools</a></span>
         </div>
-        </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>May 01, 2013</span>
-        </div>
-        <div class="section" id="common-operations-in-pandas">
-<h1><a href="2013/05/01/common_operations_in_pandas.html">Common operations in Pandas</a></h1>
-<p>This is another “do not forget” post.</p>
-<p>If you munge data in Python then you really should be using <a class="reference external" href="http://pandas.pydata.org">Pandas</a>. These are some notes about common operations.</p>
-<div class="section" id="hierachical-index">
-<h2>Hierachical index</h2>
-<p>Given a set of data like this (refered to as Table A):</p>
-<blockquote>
-<div><table border="1" class="docutils">
-<colgroup>
-<col width="36%"/>
-<col width="16%"/>
-<col width="16%"/>
-<col width="16%"/>
-<col width="17%"/>
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head"> </th>
-<th class="head">Bid</th>
-<th class="head">Mid</th>
-<th class="head">Offer</th>
-<th class="head">Variable</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>1994-01-03 16:00:00</td>
-<td>0.9980</td>
-<td>0.9981</td>
-<td>0.9981</td>
-<td>ARS</td>
-</tr>
-<tr class="row-odd"><td>1994-01-03 16:00:00</td>
-<td>12.2190</td>
-<td>12.2215</td>
-<td>12.2240</td>
-<td>ATS</td>
-</tr>
-<tr class="row-even"><td>1994-01-03 16:00:00</td>
-<td>0.6835</td>
-<td>0.6838</td>
-<td>0.6840</td>
-<td>AUD</td>
-</tr>
-<tr class="row-odd"><td>1994-01-03 16:00:00</td>
-<td>39.0000</td>
-<td>39.0000</td>
-<td>39.0000</td>
-<td>BDT</td>
-</tr>
-<tr class="row-even"><td>1994-01-03 16:00:00</td>
-<td>36.2060</td>
-<td>36.2425</td>
-<td>36.2790</td>
-<td>BEF</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p>It often makes more sense to represent it as a hierachical index (referred to as Table B), e.g.</p>
-<blockquote>
-<div><table border="1" class="docutils">
-<colgroup>
-<col width="36%"/>
-<col width="17%"/>
-<col width="16%"/>
-<col width="16%"/>
-<col width="16%"/>
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head"> </th>
-<th class="head"> </th>
-<th class="head">Bid</th>
-<th class="head">Mid</th>
-<th class="head">Offer</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>index</td>
-<td>Variable</td>
-<td> </td>
-<td> </td>
-<td> </td>
-</tr>
-<tr class="row-odd"><td>1994-01-03 16:00:00</td>
-<td>ARS</td>
-<td>0.9980</td>
-<td>0.9981</td>
-<td>0.9981</td>
-</tr>
-<tr class="row-even"><td> </td>
-<td>ATS</td>
-<td>12.2190</td>
-<td>12.2215</td>
-<td>12.2240</td>
-</tr>
-<tr class="row-odd"><td> </td>
-<td>AUD</td>
-<td>0.6835</td>
-<td>0.6838</td>
-<td>0.6840</td>
-</tr>
-<tr class="row-even"><td> </td>
-<td>BDT</td>
-<td>39.0000</td>
-<td>39.0000</td>
-<td>39.0000</td>
-</tr>
-<tr class="row-odd"><td> </td>
-<td>BEF</td>
-<td>36.2060</td>
-<td>36.2425</td>
-<td>36.2790</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p>This can be done for a pandas.DataFrame <span class="docutils literal"><span class="pre">df</span></span> like so</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s">'index'</span><span class="p">,</span> <span class="s">'Variable'</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="subset-of-columns-and-a-pivot">
-<h2>Subset of columns and a pivot</h2>
-<p>Consider again Table A above loaded as <span class="docutils literal"><span class="pre">df</span></span>, if we wish to filter out a
-subset of values in the <span class="docutils literal"><span class="pre">Variable</span></span> column, and consider the <span class="docutils literal"><span class="pre">Mid</span></span> values
-only for then we can do the following to have a continuous time series:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">g10_set</span> <span class="o">=</span> <span class="p">[</span>
-<span class="s">'USD'</span><span class="p">,</span> <span class="s">'EUR'</span><span class="p">,</span> <span class="s">'JPY'</span><span class="p">,</span> <span class="s">'CHF'</span><span class="p">,</span> <span class="s">'GBP'</span><span class="p">,</span> <span class="s">'AUD'</span><span class="p">,</span> <span class="s">'CAD'</span><span class="p">,</span> <span class="s">'SEK'</span><span class="p">,</span>
-<span class="s">'NOK'</span><span class="p">,</span> <span class="s">'NZD'</span>
-<span class="p">]</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'Variable'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">g10_set</span><span class="p">)]</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span>
-    <span class="n">index</span><span class="o">=</span><span class="s">'index'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">'Variable'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">'Mid'</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<p>Which results in Table C:</p>
-<blockquote>
-<div><table border="1" class="docutils">
-<colgroup>
-<col width="26%"/>
-<col width="10%"/>
-<col width="10%"/>
-<col width="10%"/>
-<col width="6%"/>
-<col width="10%"/>
-<col width="11%"/>
-<col width="10%"/>
-<col width="7%"/>
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Variable</th>
-<th class="head">AUD</th>
-<th class="head">CAD</th>
-<th class="head">CHF</th>
-<th class="head">EUR</th>
-<th class="head">GBP</th>
-<th class="head">JPY</th>
-<th class="head">NOK</th>
-<th class="head"> </th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>index</td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-</tr>
-<tr class="row-odd"><td>1994-01-03 16:00:00</td>
-<td>0.6838</td>
-<td>1.3143</td>
-<td>1.4827</td>
-<td>NaN</td>
-<td>1.4805</td>
-<td>112.395</td>
-<td>7.5251</td>
-<td> </td>
-</tr>
-<tr class="row-even"><td>1994-01-04 16:00:00</td>
-<td>0.6848</td>
-<td>1.3164</td>
-<td>1.4861</td>
-<td>NaN</td>
-<td>1.4819</td>
-<td>113.155</td>
-<td>7.5259</td>
-<td> </td>
-</tr>
-<tr class="row-odd"><td>1994-01-05 16:00:00</td>
-<td>0.6873</td>
-<td>1.3153</td>
-<td>1.4800</td>
-<td>NaN</td>
-<td>1.4864</td>
-<td>112.760</td>
-<td>7.5020</td>
-<td> </td>
-</tr>
-<tr class="row-even"><td>1994-01-06 16:00:00</td>
-<td>0.6843</td>
-<td>1.3220</td>
-<td>1.4745</td>
-<td>NaN</td>
-<td>1.4880</td>
-<td>112.555</td>
-<td>7.4903</td>
-<td> </td>
-</tr>
-<tr class="row-odd"><td>1994-01-07 16:00:00</td>
-<td>0.6868</td>
-<td>1.3225</td>
-<td>1.4705</td>
-<td>NaN</td>
-<td>1.4905</td>
-<td>111.825</td>
-<td>7.4865</td>
-<td> </td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-</div>
-<div class="section" id="working-with-the-index">
-<h2>Working with the index</h2>
-<p>To extract indexed data points which are common to df1 from df2, you can do the
-following:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">df2</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="n">df1</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>To extract ranges of index from df2, the DataFrame may be sliced:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># extract ranges of index</span>
-<span class="n">df2</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="n">df1</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">df1</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
-
-<span class="c"># and similarly specific values may also be accesed, pandas will coerce</span>
-<span class="c"># these to pd.Timestamp</span>
-<span class="n">df2</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="s">'2013-12-31 16:00:00'</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="other-bits-and-bobs">
-<h2>Other bits and bobs</h2>
-<ul class="simple">
-<li>Find row where value of column is max: <span class="docutils literal"><span class="pre">df['AUD'].argmax()</span></span></li>
-<li>Find indexes of null values <span class="docutils literal"><span class="pre">pd.isnull(df).any(1).nonzero()</span></span> which is
-utilising the <span class="docutils literal"><span class="pre">nonzero</span></span> numpy object, i.e. return indicies of elements
-which are nonzero.</li>
-</ul>
-</div>
-</div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by Chris Morgan</span>
-        </div>
-        
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/python.html">python</a>, <a href="tags/tools.html">tools</a></span>
-        </div>
-        </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>April 12, 2013</span>
-        </div>
-        <div class="section" id="ipython-notes">
-<h1><a href="2013/04/12/ipython_notes.html">IPython notes</a></h1>
-<p>This is a post to jog my memory when needed.</p>
-<p>IPython saves all it’s hisotry in a SQLite database. This is super useful for
-recovering commnads from an interactive programming session.</p>
-<p>Imagine you forgot to save some dataset manipulation (loading tabdeliminated
-csv into a DataFrame), you can easily recover that analysis:</p>
-<p>Find the command which used the Pandas read_table</p>
-<div class="highlight-python"><div class="highlight"><pre>In [1]: %history -g read_table
-173/5: df = pd.io.parsers.read_table(fname, header=6)
-173/9: pd.io.parsers.read_table?
-173/10: df = pd.io.parsers.read_table(fname, header=6, index_col=0)
-173/12: df = pd.io.parsers.read_table(fname, header=6, index_col=0, parse_dates=True)
-</pre></div>
-</div>
-<p>Export a chunk of that history to a file for editing:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="o">%</span><span class="n">history</span> <span class="mi">173</span><span class="o">/</span><span class="mi">12</span><span class="o">-</span><span class="mi">2000</span> <span class="o">-</span><span class="n">f</span> <span class="n">hist</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-</div>
-<p>Then after editing the file <span class="docutils literal"><span class="pre">hist.py</span></span> run this inside your currency IPython
-session with <span class="docutils literal"><span class="pre">run</span> <span class="pre">-i</span> <span class="pre">hist.py</span></span> (where the <span class="docutils literal"><span class="pre">-i</span></span> indicated running the script
-inside the current sessions namespace).</p>
-<p>Sweeet!</p>
-</div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by Chris Morgan</span>
-        </div>
-        
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/remember.html">remember</a>, <a href="tags/tools.html">tools</a>, <a href="tags/python.html">python</a></span>
-        </div>
-        </div><div class="archive_link">
+        <div class="comments">
+            <a href="http://wachunga.com/2014/01/03/setup_matlab.html#disqus_thread" data-disqus-identifier="2014/01/03/setup_matlab">Leave a comment</a>
+        </div></div><div class="archive_link">
         <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
-    </div></article><aside class="sidebar"><section><div class="widget">
+    </div><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="page2.html">Older</a> &raquo; </li>
+        </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2014/06/04/add_flippa_auction_to_calendar.html">Add Flippa auction to calendar</a>
+        </li><li>
+            <a href="2014/03/10/time_tracking_tool.html">Time tracking tool</a>
+        </li><li>
+            <a href="2014/03/05/updating_my_web_stack.html">Updating my web design stack</a>
+        </li><li>
+            <a href="2014/02/28/clojure_setup.html">Clojure setup</a>
+        </li><li>
+            <a href="2014/02/20/nowcast_this.html">Nowcast this</a>
+        </li><li>
+            <a href="2014/02/18/hal_r_varian.html">Hal R. Varian</a>
+        </li><li>
             <a href="2014/02/06/beige_book_sentiment.html">Beige Book Sentiment</a>
         </li><li>
             <a href="2014/01/13/remember_vim_folding.html">Remember Vim folding</a>
@@ -618,17 +616,13 @@ inside the current sessions namespace).</p>
             <a href="2014/01/05/being_productive_with_ipython_notebooks.html">Being even more productive with IPython notebooks</a>
         </li><li>
             <a href="2014/01/03/setup_matlab.html">Setting up MATLAB contexts</a>
-        </li><li>
-            <a href="2013/05/01/common_operations_in_pandas.html">Common operations in Pandas</a>
-        </li><li>
-            <a href="2013/04/12/ipython_notes.html">IPython notes</a>
         </li></ul>
 </div>
 </section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
         <div class="footer-container"><footer class="wrapper">&copy; Copyright 2014, Chris Morgan. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
 
-      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+      </div> <!--! end of #container --><script type="text/javascript">    var disqus_shortname = "Wachunga";    disqus_count();</script><!--[if lt IE 7 ]>
           <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
           <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
         <![endif]-->

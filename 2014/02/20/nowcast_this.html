@@ -15,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="Notes and ramblings on hacking and finance">
         <meta name="viewport" content="width=device-width">
-        <title>Remember Vim folding &mdash; Wachunga</title>
+        <title>Nowcast this &mdash; Wachunga</title>
             <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
@@ -28,7 +28,7 @@
         <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="../../../_static/plugins.js"></script>
         <script src="../../../_static/main.js"></script>
-        <link rel="next" title="Being even more productive with IPython notebooks" href="../05/being_productive_with_ipython_notebooks.html" /><link rel="prev" title="Beige Book Sentiment" href="../../02/06/beige_book_sentiment.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+        <link rel="next" title="Hal R. Varian" href="../18/hal_r_varian.html" /><link rel="prev" title="Clojure setup" href="../28/clojure_setup.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
         VERSION:     '1.3.0',
@@ -65,57 +65,49 @@
                 </li>
               </ul>
           </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
-            <span>January 13, 2014</span>
+            <span>February 20, 2014</span>
         </div>
-    <div class="section" id="remember-vim-folding">
-<h1>Remember Vim folding</h1>
-<table border="1" class="docutils">
-<colgroup>
-<col width="11%" />
-<col width="89%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Key</th>
-<th class="head">Operation</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>zO</td>
-<td>Open all folds recursivley</td>
-</tr>
-<tr class="row-odd"><td>zo</td>
-<td>Open one fold</td>
-</tr>
-<tr class="row-even"><td>zc</td>
-<td>Close one fold</td>
-</tr>
-<tr class="row-odd"><td>zC</td>
-<td>Close all folds recursivley</td>
-</tr>
-<tr class="row-even"><td>za</td>
-<td>Toggle fold</td>
-</tr>
-<tr class="row-odd"><td>zA</td>
-<td>Toggle fold recursivley</td>
-</tr>
-<tr class="row-even"><td>zR</td>
-<td>Open all folds</td>
-</tr>
-<tr class="row-odd"><td>zM</td>
-<td>Close all folds</td>
-</tr>
-</tbody>
-</table>
-<p>Then i set the following in .vimrc:</p>
-<div class="highlight-python"><div class="highlight"><pre>&quot; folding
-&quot; toggle open fold
-nnoremap f zA
-&quot; open all
-nnoremap F zR
-&quot; clos all
-nnoremap &lt;C-f&gt; zM
-</pre></div>
-</div>
+    <div class="section" id="nowcast-this">
+<h1>Nowcast this</h1>
+<p>Nowcasting is a technique which has recently gained popularity in economics.
+Essentially low frequency economic variables are foretasted by a series of
+higher frequency variables in state space. The canonical example is that of
+predicting GDP figures (low frequency of data release) from higher frequency
+variables such as jobless figures, industrial orders and trade balance.</p>
+<p>Such a model can be written as a system of two equations:</p>
+<ul>
+<li><p class="first">measurement equations linking observed series to latent variable (or state
+process)</p>
+<blockquote>
+<div><div class="math">
+\[Y_t^{K_Y} = \mu + \zeta(\Theta)X_t + G_t\]</div>
+</div></blockquote>
+</li>
+<li><p class="first">transistion equations describing the state process dynamics</p>
+<blockquote>
+<div><div class="math">
+\[X_t = \phi(\Theta)X_{t-1} + H_t\]</div>
+</div></blockquote>
+</li>
+</ul>
+<p>where in the above equations <span class="math">\(Y_t^{K_Y}\)</span> is the vector of observed
+variables and <span class="math">\(X_t\)</span> is the unobserved state variables, the dynamics of
+which are explained by the transition equation.</p>
+<p><span class="math">\(G_t\)</span> and <span class="math">\(H_t\)</span> represent covariance matrices of the disturbances
+and <span class="math">\(\phi(\Theta)\)</span> and <span class="math">\(\zeta(\Theta)\)</span> represent matrices of the
+coefficients. The covariance matrices are determined from an iterative
+Expectation-Maiximisation algorithm.</p>
+<p>As the model is in state-space we can now gain projections for both the
+observed and the predicted variables using the Kalman filter, as well as
+allowing us to have missing variables in our series.</p>
+<p>It&#8217;s an interesting approach as the forecast for the low-frequency variable
+gets progressively more accurate as more data is released as we move closer to
+the announcement date. This means that there is a <cite>news</cite> component or
+&#8220;unexpected&#8221; component which we obtain from the model as the long-term (or
+indeed short-term) variables have their forecast updated, which is could be a
+useful signal.</p>
+<p>A <a class="reference external" href="http://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1564.pdf">paper</a> by Marta Bańbura, Domenico Giannone, Michele Modugno and Lucrezia
+Reichlin reviewing the approaches can be found on the ECB website.</p>
 </div>
 
     <div class="postmeta">
@@ -123,11 +115,15 @@ nnoremap &lt;C-f&gt; zM
             <span>Posted by Chris Morgan</span>
         </div>
         
-        
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="../../../tags/research.html">research</a></span>
+        </div>
         </div><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="../../02/06/beige_book_sentiment.html">Beige Book Sentiment</a></li>
-            <li class="right"><a href="../05/being_productive_with_ipython_notebooks.html">Being even more productive with IPython notebooks</a> &raquo; </li>
-        </ul><div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "Wachunga";    var disqus_identifier = "2014/01/13/remember_vim_folding";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></article><aside class="sidebar"><section><div class="widget">
+            <li class="left"> &laquo; <a href="../28/clojure_setup.html">Clojure setup</a></li>
+            <li class="right"><a href="../18/hal_r_varian.html">Hal R. Varian</a> &raquo; </li>
+        </ul><div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "Wachunga";    var disqus_identifier = "2014/02/20/nowcast_this";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
             <a href="../../06/04/add_flippa_auction_to_calendar.html">Add Flippa auction to calendar</a>
@@ -136,19 +132,19 @@ nnoremap &lt;C-f&gt; zM
         </li><li>
             <a href="../../03/05/updating_my_web_stack.html">Updating my web design stack</a>
         </li><li>
-            <a href="../../02/28/clojure_setup.html">Clojure setup</a>
+            <a href="../28/clojure_setup.html">Clojure setup</a>
         </li><li>
-            <a href="../../02/20/nowcast_this.html">Nowcast this</a>
+            <a href="#">Nowcast this</a>
         </li><li>
-            <a href="../../02/18/hal_r_varian.html">Hal R. Varian</a>
+            <a href="../18/hal_r_varian.html">Hal R. Varian</a>
         </li><li>
-            <a href="../../02/06/beige_book_sentiment.html">Beige Book Sentiment</a>
+            <a href="../06/beige_book_sentiment.html">Beige Book Sentiment</a>
         </li><li>
-            <a href="#">Remember Vim folding</a>
+            <a href="../../01/13/remember_vim_folding.html">Remember Vim folding</a>
         </li><li>
-            <a href="../05/being_productive_with_ipython_notebooks.html">Being even more productive with IPython notebooks</a>
+            <a href="../../01/05/being_productive_with_ipython_notebooks.html">Being even more productive with IPython notebooks</a>
         </li><li>
-            <a href="../03/setup_matlab.html">Setting up MATLAB contexts</a>
+            <a href="../../01/03/setup_matlab.html">Setting up MATLAB contexts</a>
         </li></ul>
 </div>
 </section></aside></div> <!-- #main --></div> <!-- #main-container -->

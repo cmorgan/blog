@@ -1,4 +1,3 @@
-
 Remember Vim folding
 =====================
 

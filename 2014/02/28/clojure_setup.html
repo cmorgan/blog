@@ -15,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="Notes and ramblings on hacking and finance">
         <meta name="viewport" content="width=device-width">
-        <title>Remember Vim folding &mdash; Wachunga</title>
+        <title>Clojure setup &mdash; Wachunga</title>
             <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
@@ -28,7 +28,7 @@
         <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="../../../_static/plugins.js"></script>
         <script src="../../../_static/main.js"></script>
-        <link rel="next" title="Being even more productive with IPython notebooks" href="../05/being_productive_with_ipython_notebooks.html" /><link rel="prev" title="Beige Book Sentiment" href="../../02/06/beige_book_sentiment.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+        <link rel="next" title="Nowcast this" href="../20/nowcast_this.html" /><link rel="prev" title="Updating my web design stack" href="../../03/05/updating_my_web_stack.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
         VERSION:     '1.3.0',
@@ -65,56 +65,80 @@
                 </li>
               </ul>
           </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
-            <span>January 13, 2014</span>
+            <span>February 28, 2014</span>
         </div>
-    <div class="section" id="remember-vim-folding">
-<h1>Remember Vim folding</h1>
+    <div class="section" id="clojure-setup">
+<h1>Clojure setup</h1>
+<p>I&#8217;m having lots of fun learning Clojure. There are a couple of decent ways to
+be productive in Vim with Clojure, described below:</p>
+<div class="section" id="vim-fireplace">
+<h2>Vim-Fireplace</h2>
+<p><a class="reference external" href="https://github.com/tpope/vim-fireplace">Vim-fireplace</a> connects to a Clojure
+REPL instance from within Vim.</p>
+<p>Some key commands:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="11%" />
-<col width="89%" />
+<col width="16%" />
+<col width="84%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Key</th>
-<th class="head">Operation</th>
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Function</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>zO</td>
-<td>Open all folds recursivley</td>
+<tr class="row-even"><td><cite>cpp</cite></td>
+<td>Execute the current form.</td>
 </tr>
-<tr class="row-odd"><td>zo</td>
-<td>Open one fold</td>
+<tr class="row-odd"><td><cite>cpr</cite></td>
+<td>Reload the current file.</td>
 </tr>
-<tr class="row-even"><td>zc</td>
-<td>Close one fold</td>
+<tr class="row-even"><td><cite>K</cite></td>
+<td>Lookup help for command that the cursor is
+under.</td>
 </tr>
-<tr class="row-odd"><td>zC</td>
-<td>Close all folds recursivley</td>
-</tr>
-<tr class="row-even"><td>za</td>
-<td>Toggle fold</td>
-</tr>
-<tr class="row-odd"><td>zA</td>
-<td>Toggle fold recursivley</td>
-</tr>
-<tr class="row-even"><td>zR</td>
-<td>Open all folds</td>
-</tr>
-<tr class="row-odd"><td>zM</td>
-<td>Close all folds</td>
+<tr class="row-odd"><td><cite>[d</cite></td>
+<td>Lookup source that the command is under.</td>
 </tr>
 </tbody>
 </table>
-<p>Then i set the following in .vimrc:</p>
-<div class="highlight-python"><div class="highlight"><pre>&quot; folding
-&quot; toggle open fold
-nnoremap f zA
-&quot; open all
-nnoremap F zR
-&quot; clos all
-nnoremap &lt;C-f&gt; zM
-</pre></div>
+<p>It works well, but i need to figure out a way to ensure that the REPL buffer is
+always open as the popping open of the buffer grows old quickly.</p>
+</div>
+<div class="section" id="vim-slime">
+<h2>Vim-slime</h2>
+<p>A solution which uses the excellent Tmux is <a class="reference external" href="https://github.com/jpalardy/vim-slime">vim-slime</a>, a nice setup is described in this
+<a class="reference external" href="http://michaelalynmiller.com/blog/2013/02/27/vim-tmux-clojure/">blog</a>. It
+works with any REPL. In brief you open a Clojure REPL in a Tmux window and tell
+Vim to send highlighted lines. It&#8217;s good as the REPL window remains open
+showing the command execution history.</p>
+<p>Some key commands:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Function</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><cite>C-c, C-c</cite></td>
+<td>Send line to Tmux window with REPL.</td>
+</tr>
+<tr class="row-odd"><td><cite>&lt;highlight lines&gt; C-c, C-c</cite></td>
+<td>Send line to Tmux window with REPL.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion</h2>
+<p>A combination of both of the above works really well. I use Vim-Fireplace in
+order to get contextual help and Vim-slime to execute code. Once i figure out
+how to have a consistent buffer open in vim-fireplace then i guess i&#8217;ll ditch
+vim-slime.</p>
 </div>
 </div>
 
@@ -123,11 +147,15 @@ nnoremap &lt;C-f&gt; zM
             <span>Posted by Chris Morgan</span>
         </div>
         
-        
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="../../../tags/toosl.html">toosl</a>, <a href="../../../tags/clojure.html">clojure</a></span>
+        </div>
         </div><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="../../02/06/beige_book_sentiment.html">Beige Book Sentiment</a></li>
-            <li class="right"><a href="../05/being_productive_with_ipython_notebooks.html">Being even more productive with IPython notebooks</a> &raquo; </li>
-        </ul><div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "Wachunga";    var disqus_identifier = "2014/01/13/remember_vim_folding";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></article><aside class="sidebar"><section><div class="widget">
+            <li class="left"> &laquo; <a href="../../03/05/updating_my_web_stack.html">Updating my web design stack</a></li>
+            <li class="right"><a href="../20/nowcast_this.html">Nowcast this</a> &raquo; </li>
+        </ul><div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "Wachunga";    var disqus_identifier = "2014/02/28/clojure_setup";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
             <a href="../../06/04/add_flippa_auction_to_calendar.html">Add Flippa auction to calendar</a>
@@ -136,19 +164,19 @@ nnoremap &lt;C-f&gt; zM
         </li><li>
             <a href="../../03/05/updating_my_web_stack.html">Updating my web design stack</a>
         </li><li>
-            <a href="../../02/28/clojure_setup.html">Clojure setup</a>
+            <a href="#">Clojure setup</a>
         </li><li>
-            <a href="../../02/20/nowcast_this.html">Nowcast this</a>
+            <a href="../20/nowcast_this.html">Nowcast this</a>
         </li><li>
-            <a href="../../02/18/hal_r_varian.html">Hal R. Varian</a>
+            <a href="../18/hal_r_varian.html">Hal R. Varian</a>
         </li><li>
-            <a href="../../02/06/beige_book_sentiment.html">Beige Book Sentiment</a>
+            <a href="../06/beige_book_sentiment.html">Beige Book Sentiment</a>
         </li><li>
-            <a href="#">Remember Vim folding</a>
+            <a href="../../01/13/remember_vim_folding.html">Remember Vim folding</a>
         </li><li>
-            <a href="../05/being_productive_with_ipython_notebooks.html">Being even more productive with IPython notebooks</a>
+            <a href="../../01/05/being_productive_with_ipython_notebooks.html">Being even more productive with IPython notebooks</a>
         </li><li>
-            <a href="../03/setup_matlab.html">Setting up MATLAB contexts</a>
+            <a href="../../01/03/setup_matlab.html">Setting up MATLAB contexts</a>
         </li></ul>
 </div>
 </section></aside></div> <!-- #main --></div> <!-- #main-container -->
