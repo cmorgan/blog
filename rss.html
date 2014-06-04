@@ -14,7 +14,8 @@
             <description><![CDATA[<div class="section" id="add-flippa-auction-to-calendar">
 <h1>Add Flippa auction to calendar</h1>
 <p>This is a nasty hack to add a link to Flippa which will put you on the road to
-adding an event to your Google Calendar at the auction end time.</p>
+adding an event to your Google Calendar at the auction end time. Add the
+following javascript as a Bookmarklet:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="nx">javascript</span><span class="o">:</span><span class="k">void</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span> <span class="s2">&quot;#auctionstatus&quot;</span> <span class="p">).</span><span class="nx">append</span><span class="p">(</span> <span class="s2">&quot;&lt;a href='&quot;</span> <span class="o">+</span> <span class="s2">&quot;http://google.co.uk/search?q=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span><span class="p">(</span><span class="s2">&quot;google calendar add &quot;</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#auctionstatus&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">).</span><span class="nx">substr</span><span class="p">(</span><span class="mi">41</span><span class="p">,</span> <span class="mi">19</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;'&gt;Add to calendar&lt;/a&gt;&quot;</span><span class="p">));</span>
 </pre></div>
 </div>

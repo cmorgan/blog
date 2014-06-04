@@ -2,7 +2,8 @@ Add Flippa auction to calendar
 ==============================
 
 This is a nasty hack to add a link to Flippa which will put you on the road to
-adding an event to your Google Calendar at the auction end time.
+adding an event to your Google Calendar at the auction end time. Add the
+following javascript as a Bookmarklet:
 
 .. code-block:: javascript
 
