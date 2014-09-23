@@ -1,0 +1,26 @@
+Get your FIX in the cloud
+=========================
+
+The need arose recently to setup a client with an AWS EC2 based FIX connection
+to the LSE via a Proquote VPN. The Proquote VPN connection must be initiated by
+the client which rules out an AWS VPC connection which is receive only. We
+chose a software VPN, OpenSwan to initiate the connection to Proquote.
+
+The following script will install ope
+
+
+
+as 
+
+We recently had the need to setup a client with an AWS EC2 based 
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: finance
+.. tags:: finance
+.. comments::
