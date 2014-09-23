@@ -67,6 +67,121 @@
                 </li>
               </ul>
           </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
+            <span>September 23, 2014</span>
+        </div>
+        <h1><a href="2014/09/23/get_your_fix_in_the_cloud.html">Get your FIX in the cloud</a></h1>
+<p>The need arose recently to setup a client with an AWS EC2 based FIX connection
+to the LSE via a Proquote VPN. The Proquote VPN connection must be initiated by
+the client which rules out an AWS VPC connection (which is receive only). We
+chose a software VPN, OpenSwan to initiate the connection to Proquote.</p>
+<p>Amazon EC2 only allows TCP/UDP and ICMP therefore IPSec’s ESP and AH headers
+will be blocked, forcing us to use an encapsulated IPSec connection over UDP.
+Ensure that the Proquote side is configured in IPSec tunneling mode.</p>
+<p>The version of OpenSwan which we had success with was Linux Openswan
+U2.6.41-4-gd5ce941/K3.2.0-64-virtual from source, check that this Git hash has
+been released into your version of OpenSwan.</p>
+<p>Given a valid OpenSwan install on a debian based Linux, the following script
+will setup the OpenSwan connection initiated from EC2.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># following https://gist.github.com/winhamwr/2871257</span>
+<span class="c">#</span>
+<span class="c"># EC2 security groups: open UDP access on 500 and 4500</span>
+<span class="c">#</span>
+<span class="c"># IPSec version used with success: Linux Openswan U2.6.41-4-gd5ce941/K3.2.0-64-virtual (netkey)</span>
+
+<span class="nv">ELASTIC_IP</span><span class="o">=</span><span class="s2">"&lt;your ip&gt;"</span>
+<span class="nv">SOURCE_IP</span><span class="o">=</span><span class="s2">"${ELASTIC_IP}"</span>
+<span class="nv">CONN_NAME</span><span class="o">=</span><span class="s2">"LSE_Proquote"</span>
+<span class="nv">SECURE_PSK</span><span class="o">=</span><span class="s2">"&lt;your psk&gt;"</span>
+<span class="nv">RIGHT_PUBLIC_IP</span><span class="o">=</span><span class="s2">"&lt;proqute public ip&gt;"</span>
+<span class="nv">RIGHT_SUBNET</span><span class="o">=</span><span class="s2">"&lt;proquote internal ip&gt;"</span>
+
+sudo apt-get install -y openswan
+<span class="c">#sudo ipsec verify  # Throws warnings as EC2 uses NETKEY Ipsec kernel stack</span>
+
+sudo mv /etc/sysctl.conf /etc/sysctl.conf.bak
+
+cat &gt; sysctl.conf <span class="s">&lt;&lt; ENDMSG</span>
+<span class="s">net.ipv4.ip_forward=1</span>
+
+<span class="s">net.ipv4.conf.default.send_redirects = 0</span>
+<span class="s">net.ipv4.conf.all.send_redirects = 0</span>
+<span class="s">net.ipv4.conf.eth0.send_redirects = 0</span>
+
+<span class="s">net.ipv4.conf.all.accept_redirects = 0</span>
+<span class="s">net.ipv4.conf.default.accept_redirects = 0</span>
+<span class="s">net.ipv4.conf.eth0.accept_redirects = 0</span>
+<span class="s">ENDMSG</span>
+
+sudo mv sysctl.conf /etc/sysctl.conf
+sudo sysctl -p /etc/sysctl.conf
+
+<span class="c">#sudo ipsec verify  # should now have no ERRORS</span>
+
+<span class="c"># Main config file</span>
+cat &gt; ipsec.conf <span class="s">&lt;&lt; ENDMSG</span>
+<span class="s">version 2.0</span>
+
+<span class="s">config setup</span>
+<span class="s">    nat_traversal=yes</span>
+<span class="s">    protostack=netkey</span>
+<span class="s">    virtual_private=%v4:10.0.0.0/8,%v4:172.16.0.0/12,%v4:192.168.0.0/16,%v4:!192.168.5.0/24</span>
+<span class="s">    oe=off</span>
+
+<span class="s">include /etc/ipsec.d/*.conf</span>
+<span class="s">ENDMSG</span>
+
+sudo mv ipsec.conf /etc/.
+
+
+<span class="c"># Connection specific config.</span>
+cat &gt; <span class="nv">$CONN_NAME</span>.conf <span class="s">&lt;&lt; ENDMSG</span>
+<span class="s">conn $CONN_NAME</span>
+<span class="s">    type=tunnel</span>
+<span class="s">    authby=secret</span>
+<span class="s">    left=%defaultroute</span>
+<span class="s">    leftsourceip=$SOURCE_IP</span>
+<span class="s">    leftid=$ELASTIC_IP</span>
+<span class="s">    leftnexthop=%defaultroute</span>
+<span class="s">    right=$RIGHT_PUBLIC_IP</span>
+<span class="s">    rightid=$RIGHT_PUBLIC_IP</span>
+<span class="s">    rightsubnet=$RIGHT_SUBNET</span>
+<span class="s">    esp=aes192-sha1</span>
+<span class="s">    keyexchange=ike</span>
+<span class="s">    ike=aes192-sha1</span>
+<span class="s">    salifetime=43200s</span>
+<span class="s">    pfs=yes</span>
+<span class="s">    auto=start</span>
+<span class="s">    dpdaction=restart</span>
+<span class="s">    forceencaps=yes</span>
+<span class="s">ENDMSG</span>
+
+sudo mv <span class="nv">$CONN_NAME</span>.conf /etc/ipsec.d/.
+
+<span class="c"># Ipsec.secrets</span>
+cat &gt; ipsec.secrets <span class="s">&lt;&lt; ENDMSG</span>
+<span class="s">$ELASTIC_IP $RIGHT_PUBLIC_IP: PSK "$SECURE_PSK"</span>
+<span class="s">ENDMSG</span>
+sudo mv ipsec.secrets /etc/.
+</pre></div>
+</div>
+
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Chris Morgan</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/finance.html">finance</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/finance.html">finance</a></span>
+        </div>
+        <div class="comments">
+            <a href="http://wachunga.com/2014/09/23/get_your_fix_in_the_cloud.html#disqus_thread" data-disqus-identifier="2014/09/23/get_your_fix_in_the_cloud">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>June 04, 2014</span>
         </div>
         <h1><a href="2014/06/04/add_flippa_auction_to_calendar.html">Add Flippa auction to calendar</a></h1>
@@ -536,52 +651,6 @@ correctly:</p>
         </div>
         <div class="comments">
             <a href="http://wachunga.com/2014/01/05/being_productive_with_ipython_notebooks.html#disqus_thread" data-disqus-identifier="2014/01/05/being_productive_with_ipython_notebooks">Leave a comment</a>
-        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>January 03, 2014</span>
-        </div>
-        <h1><a href="2014/01/03/setup_matlab.html">Setting up MATLAB contexts</a></h1>
-<p>If you are forced to use MATLAB (here’s a whole blog devoted to the topic of
-why not to use it <a class="reference external" href="http://abandonmatlab.wordpress.com">http://abandonmatlab.wordpress.com/</a>) the following advice
-maybe useful for easily managing your path and hence creating contexts of work.</p>
-<p>In cases where Administrator privileges are not held, the following config. is
-flexible.</p>
-<p>Define MATLAB’s <span class="docutils literal"><span class="pre">userpath</span></span> to be a user writeable directory. This is the initial
-directory MATLAB will parse.</p>
-<p>Within the <span class="docutils literal"><span class="pre">userpath</span></span> create <span class="docutils literal"><span class="pre">startup.m</span></span>:</p>
-<div class="highlight-matlab"><div class="highlight"><pre><span class="k">if</span> <span class="o">~</span><span class="n">isdeployed</span>
-    <span class="n">path</span><span class="p">(</span><span class="n">my_path</span><span class="p">)</span>
-    <span class="n">set_vars</span>
-</pre></div>
-</div>
-<p>Where <span class="docutils literal"><span class="pre">my_path</span></span> is a matlab file which sets the path like:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">function</span> <span class="n">p</span> <span class="o">=</span> <span class="n">my_path</span>
-     <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="s">'/home/chris/matlab;'</span><span class="p">,</span> <span class="s">'/home/chris/important;'</span><span class="p">];</span>
-     <span class="n">cd</span><span class="p">(</span><span class="s">'/home/chris/matlab'</span><span class="p">);</span>
-<span class="n">end</span>
-</pre></div>
-</div>
-<p>So we set the path and cd to a relevant directory. Also in the userpath folder,
-one can keep many files like <span class="docutils literal"><span class="pre">my_path.m</span></span>, which define different contexts to
-work in, making changing contexts as easy as:</p>
-<div class="highlight-matlab"><div class="highlight"><pre><span class="n">path</span><span class="p">(</span><span class="n">my_other_path</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Whithin each context <span class="docutils literal"><span class="pre">path</span></span> file if you also call the <span class="docutils literal"><span class="pre">set_vars</span></span> script,
-this allows <span class="docutils literal"><span class="pre">set_vars</span></span> to contain useful variables e.g. paths to output
-directories and the like.</p>
-
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by Chris Morgan</span>
-        </div>
-        
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/matlab.html">matlab</a>, <a href="tags/tools.html">tools</a></span>
-        </div>
-        <div class="comments">
-            <a href="http://wachunga.com/2014/01/03/setup_matlab.html#disqus_thread" data-disqus-identifier="2014/01/03/setup_matlab">Leave a comment</a>
         </div></div><div class="archive_link">
         <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
     </div><ul class="related clearfix">
@@ -590,6 +659,8 @@ directories and the like.</p>
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2014/09/23/get_your_fix_in_the_cloud.html">Get your FIX in the cloud</a>
+        </li><li>
             <a href="2014/06/04/add_flippa_auction_to_calendar.html">Add Flippa auction to calendar</a>
         </li><li>
             <a href="2014/03/10/time_tracking_tool.html">Time tracking tool</a>
@@ -607,8 +678,6 @@ directories and the like.</p>
             <a href="2014/01/13/remember_vim_folding.html">Remember Vim folding</a>
         </li><li>
             <a href="2014/01/05/being_productive_with_ipython_notebooks.html">Being even more productive with IPython notebooks</a>
-        </li><li>
-            <a href="2014/01/03/setup_matlab.html">Setting up MATLAB contexts</a>
         </li></ul>
 </div>
 </section></aside></div> <!-- #main --></div> <!-- #main-container -->

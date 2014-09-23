@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2014/09/23/get_your_fix_in_the_cloud
    2014/06/04/add_flippa_auction_to_calendar
    2014/03/10/time_tracking_tool
    2014/03/05/updating_my_web_stack

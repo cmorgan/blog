@@ -1,0 +1,220 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="Notes and ramblings on hacking and finance">
+        <meta name="viewport" content="width=device-width">
+        <title>Get your FIX in the cloud &mdash; Wachunga</title>
+            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/flat.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../_static/font-awesome.min.css" type="text/css">
+        <!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script>
+        <script src="../../../_static/main.js"></script>
+        <link rel="next" title="Add Flippa auction to calendar" href="../../06/04/add_flippa_auction_to_calendar.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.4.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="../../../_static/disqus.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
+            }
+        });
+    </script>
+
+	<meta name="google-site-verification" content="8PakBMR3NErDYTV_UQ-p-kKLs-Vj-fH0PTim-hapWV0"/></head>
+    <body role="document">
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><header role="banner">
+            <hgroup>
+              <h1><a href="../../../index.html">Wachunga</a></h1><h2>Notes and ramblings on hacking and finance</h2></hgroup>
+          </header>
+      <nav role="navigation">
+            <ul><li class="main-nav">
+                  <a href="../../../index.html">Home</a>
+                </li>
+              <li class="main-nav">
+                  <a href="../../../pages/about.html">About</a>
+                </li>
+              </ul>
+          </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
+            <span>September 23, 2014</span>
+        </div>
+    <div class="section" id="get-your-fix-in-the-cloud">
+<h1>Get your FIX in the cloud</h1>
+<p>The need arose recently to setup a client with an AWS EC2 based FIX connection
+to the LSE via a Proquote VPN. The Proquote VPN connection must be initiated by
+the client which rules out an AWS VPC connection (which is receive only). We
+chose a software VPN, OpenSwan to initiate the connection to Proquote.</p>
+<p>Amazon EC2 only allows TCP/UDP and ICMP therefore IPSec&#8217;s ESP and AH headers
+will be blocked, forcing us to use an encapsulated IPSec connection over UDP.
+Ensure that the Proquote side is configured in IPSec tunneling mode.</p>
+<p>The version of OpenSwan which we had success with was Linux Openswan
+U2.6.41-4-gd5ce941/K3.2.0-64-virtual from source, check that this Git hash has
+been released into your version of OpenSwan.</p>
+<p>Given a valid OpenSwan install on a debian based Linux, the following script
+will setup the OpenSwan connection initiated from EC2.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># following https://gist.github.com/winhamwr/2871257</span>
+<span class="c">#</span>
+<span class="c"># EC2 security groups: open UDP access on 500 and 4500</span>
+<span class="c">#</span>
+<span class="c"># IPSec version used with success: Linux Openswan U2.6.41-4-gd5ce941/K3.2.0-64-virtual (netkey)</span>
+
+<span class="nv">ELASTIC_IP</span><span class="o">=</span><span class="s2">&quot;&lt;your ip&gt;&quot;</span>
+<span class="nv">SOURCE_IP</span><span class="o">=</span><span class="s2">&quot;${ELASTIC_IP}&quot;</span>
+<span class="nv">CONN_NAME</span><span class="o">=</span><span class="s2">&quot;LSE_Proquote&quot;</span>
+<span class="nv">SECURE_PSK</span><span class="o">=</span><span class="s2">&quot;&lt;your psk&gt;&quot;</span>
+<span class="nv">RIGHT_PUBLIC_IP</span><span class="o">=</span><span class="s2">&quot;&lt;proqute public ip&gt;&quot;</span>
+<span class="nv">RIGHT_SUBNET</span><span class="o">=</span><span class="s2">&quot;&lt;proquote internal ip&gt;&quot;</span>
+
+sudo apt-get install -y openswan
+<span class="c">#sudo ipsec verify  # Throws warnings as EC2 uses NETKEY Ipsec kernel stack</span>
+
+sudo mv /etc/sysctl.conf /etc/sysctl.conf.bak
+
+cat &gt; sysctl.conf <span class="s">&lt;&lt; ENDMSG</span>
+<span class="s">net.ipv4.ip_forward=1</span>
+
+<span class="s">net.ipv4.conf.default.send_redirects = 0</span>
+<span class="s">net.ipv4.conf.all.send_redirects = 0</span>
+<span class="s">net.ipv4.conf.eth0.send_redirects = 0</span>
+
+<span class="s">net.ipv4.conf.all.accept_redirects = 0</span>
+<span class="s">net.ipv4.conf.default.accept_redirects = 0</span>
+<span class="s">net.ipv4.conf.eth0.accept_redirects = 0</span>
+<span class="s">ENDMSG</span>
+
+sudo mv sysctl.conf /etc/sysctl.conf
+sudo sysctl -p /etc/sysctl.conf
+
+<span class="c">#sudo ipsec verify  # should now have no ERRORS</span>
+
+<span class="c"># Main config file</span>
+cat &gt; ipsec.conf <span class="s">&lt;&lt; ENDMSG</span>
+<span class="s">version 2.0</span>
+
+<span class="s">config setup</span>
+<span class="s">    nat_traversal=yes</span>
+<span class="s">    protostack=netkey</span>
+<span class="s">    virtual_private=%v4:10.0.0.0/8,%v4:172.16.0.0/12,%v4:192.168.0.0/16,%v4:!192.168.5.0/24</span>
+<span class="s">    oe=off</span>
+
+<span class="s">include /etc/ipsec.d/*.conf</span>
+<span class="s">ENDMSG</span>
+
+sudo mv ipsec.conf /etc/.
+
+
+<span class="c"># Connection specific config.</span>
+cat &gt; <span class="nv">$CONN_NAME</span>.conf <span class="s">&lt;&lt; ENDMSG</span>
+<span class="s">conn $CONN_NAME</span>
+<span class="s">    type=tunnel</span>
+<span class="s">    authby=secret</span>
+<span class="s">    left=%defaultroute</span>
+<span class="s">    leftsourceip=$SOURCE_IP</span>
+<span class="s">    leftid=$ELASTIC_IP</span>
+<span class="s">    leftnexthop=%defaultroute</span>
+<span class="s">    right=$RIGHT_PUBLIC_IP</span>
+<span class="s">    rightid=$RIGHT_PUBLIC_IP</span>
+<span class="s">    rightsubnet=$RIGHT_SUBNET</span>
+<span class="s">    esp=aes192-sha1</span>
+<span class="s">    keyexchange=ike</span>
+<span class="s">    ike=aes192-sha1</span>
+<span class="s">    salifetime=43200s</span>
+<span class="s">    pfs=yes</span>
+<span class="s">    auto=start</span>
+<span class="s">    dpdaction=restart</span>
+<span class="s">    forceencaps=yes</span>
+<span class="s">ENDMSG</span>
+
+sudo mv <span class="nv">$CONN_NAME</span>.conf /etc/ipsec.d/.
+
+<span class="c"># Ipsec.secrets</span>
+cat &gt; ipsec.secrets <span class="s">&lt;&lt; ENDMSG</span>
+<span class="s">$ELASTIC_IP $RIGHT_PUBLIC_IP: PSK &quot;$SECURE_PSK&quot;</span>
+<span class="s">ENDMSG</span>
+sudo mv ipsec.secrets /etc/.
+</pre></div>
+</div>
+</div>
+
+    <div class="postmeta">
+        <div class="author">
+            <span>Posted by Chris Morgan</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="../../../categories/finance.html">finance</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="../../../tags/finance.html">finance</a></span>
+        </div>
+        </div><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../../06/04/add_flippa_auction_to_calendar.html">Add Flippa auction to calendar</a> &raquo; </li>
+        </ul><div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "Wachunga";    var disqus_identifier = "2014/09/23/get_your_fix_in_the_cloud";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></article><aside class="sidebar"><section><div class="widget">
+    <h1>Recent Posts</h1>
+    <ul><li>
+            <a href="#">Get your FIX in the cloud</a>
+        </li><li>
+            <a href="../../06/04/add_flippa_auction_to_calendar.html">Add Flippa auction to calendar</a>
+        </li><li>
+            <a href="../../03/10/time_tracking_tool.html">Time tracking tool</a>
+        </li><li>
+            <a href="../../03/05/updating_my_web_stack.html">Updating my web design stack</a>
+        </li><li>
+            <a href="../../02/28/clojure_setup.html">Clojure setup</a>
+        </li><li>
+            <a href="../../02/20/nowcast_this.html">Nowcast this</a>
+        </li><li>
+            <a href="../../02/18/hal_r_varian.html">Hal R. Varian</a>
+        </li><li>
+            <a href="../../02/06/beige_book_sentiment.html">Beige Book Sentiment</a>
+        </li><li>
+            <a href="../../01/13/remember_vim_folding.html">Remember Vim folding</a>
+        </li><li>
+            <a href="../../01/05/being_productive_with_ipython_notebooks.html">Being even more productive with IPython notebooks</a>
+        </li></ul>
+</div>
+</section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2014, Chris Morgan. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
+</html>

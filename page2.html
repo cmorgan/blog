@@ -67,6 +67,52 @@
                 </li>
               </ul>
           </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
+            <span>January 03, 2014</span>
+        </div>
+        <h1><a href="2014/01/03/setup_matlab.html">Setting up MATLAB contexts</a></h1>
+<p>If you are forced to use MATLAB (here’s a whole blog devoted to the topic of
+why not to use it <a class="reference external" href="http://abandonmatlab.wordpress.com">http://abandonmatlab.wordpress.com/</a>) the following advice
+maybe useful for easily managing your path and hence creating contexts of work.</p>
+<p>In cases where Administrator privileges are not held, the following config. is
+flexible.</p>
+<p>Define MATLAB’s <span class="docutils literal"><span class="pre">userpath</span></span> to be a user writeable directory. This is the initial
+directory MATLAB will parse.</p>
+<p>Within the <span class="docutils literal"><span class="pre">userpath</span></span> create <span class="docutils literal"><span class="pre">startup.m</span></span>:</p>
+<div class="highlight-matlab"><div class="highlight"><pre><span class="k">if</span> <span class="o">~</span><span class="n">isdeployed</span>
+    <span class="n">path</span><span class="p">(</span><span class="n">my_path</span><span class="p">)</span>
+    <span class="n">set_vars</span>
+</pre></div>
+</div>
+<p>Where <span class="docutils literal"><span class="pre">my_path</span></span> is a matlab file which sets the path like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">function</span> <span class="n">p</span> <span class="o">=</span> <span class="n">my_path</span>
+     <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="s">'/home/chris/matlab;'</span><span class="p">,</span> <span class="s">'/home/chris/important;'</span><span class="p">];</span>
+     <span class="n">cd</span><span class="p">(</span><span class="s">'/home/chris/matlab'</span><span class="p">);</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+<p>So we set the path and cd to a relevant directory. Also in the userpath folder,
+one can keep many files like <span class="docutils literal"><span class="pre">my_path.m</span></span>, which define different contexts to
+work in, making changing contexts as easy as:</p>
+<div class="highlight-matlab"><div class="highlight"><pre><span class="n">path</span><span class="p">(</span><span class="n">my_other_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Whithin each context <span class="docutils literal"><span class="pre">path</span></span> file if you also call the <span class="docutils literal"><span class="pre">set_vars</span></span> script,
+this allows <span class="docutils literal"><span class="pre">set_vars</span></span> to contain useful variables e.g. paths to output
+directories and the like.</p>
+
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Chris Morgan</span>
+        </div>
+        
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/matlab.html">matlab</a>, <a href="tags/tools.html">tools</a></span>
+        </div>
+        <div class="comments">
+            <a href="http://wachunga.com/2014/01/03/setup_matlab.html#disqus_thread" data-disqus-identifier="2014/01/03/setup_matlab">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>May 01, 2013</span>
         </div>
         <h1><a href="2013/05/01/common_operations_in_pandas.html">Common operations in Pandas</a></h1>
@@ -381,6 +427,8 @@ inside the current sessions namespace).</p>
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2014/09/23/get_your_fix_in_the_cloud.html">Get your FIX in the cloud</a>
+        </li><li>
             <a href="2014/06/04/add_flippa_auction_to_calendar.html">Add Flippa auction to calendar</a>
         </li><li>
             <a href="2014/03/10/time_tracking_tool.html">Time tracking tool</a>
@@ -398,8 +446,6 @@ inside the current sessions namespace).</p>
             <a href="2014/01/13/remember_vim_folding.html">Remember Vim folding</a>
         </li><li>
             <a href="2014/01/05/being_productive_with_ipython_notebooks.html">Being even more productive with IPython notebooks</a>
-        </li><li>
-            <a href="2014/01/03/setup_matlab.html">Setting up MATLAB contexts</a>
         </li></ul>
 </div>
 </section></aside></div> <!-- #main --></div> <!-- #main-container -->

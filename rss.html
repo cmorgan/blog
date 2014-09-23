@@ -5,8 +5,112 @@
         <link>http://wachunga.com/</link>
         <description>Notes and ramblings on hacking and finance</description>
         <language>en-us</language>
-        <pubDate>Wed, 04 Jun 2014 00:00:00 +0100</pubDate>
+        <pubDate>Tue, 23 Sep 2014 00:00:00 +0100</pubDate>
         
+        <item>
+            <link>http://wachunga.com/2014/09/23/get_your_fix_in_the_cloud.html</link>
+            <guid>http://wachunga.com/2014/09/23/get_your_fix_in_the_cloud.html</guid>
+            <title><![CDATA[Get your FIX in the cloud]]></title>
+            <description><![CDATA[<h1>Get your FIX in the cloud</h1>
+<p>The need arose recently to setup a client with an AWS EC2 based FIX connection
+to the LSE via a Proquote VPN. The Proquote VPN connection must be initiated by
+the client which rules out an AWS VPC connection (which is receive only). We
+chose a software VPN, OpenSwan to initiate the connection to Proquote.</p>
+<p>Amazon EC2 only allows TCP/UDP and ICMP therefore IPSec’s ESP and AH headers
+will be blocked, forcing us to use an encapsulated IPSec connection over UDP.
+Ensure that the Proquote side is configured in IPSec tunneling mode.</p>
+<p>The version of OpenSwan which we had success with was Linux Openswan
+U2.6.41-4-gd5ce941/K3.2.0-64-virtual from source, check that this Git hash has
+been released into your version of OpenSwan.</p>
+<p>Given a valid OpenSwan install on a debian based Linux, the following script
+will setup the OpenSwan connection initiated from EC2.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># following https://gist.github.com/winhamwr/2871257</span>
+<span class="c">#</span>
+<span class="c"># EC2 security groups: open UDP access on 500 and 4500</span>
+<span class="c">#</span>
+<span class="c"># IPSec version used with success: Linux Openswan U2.6.41-4-gd5ce941/K3.2.0-64-virtual (netkey)</span>
+
+<span class="nv">ELASTIC_IP</span><span class="o">=</span><span class="s2">"&lt;your ip&gt;"</span>
+<span class="nv">SOURCE_IP</span><span class="o">=</span><span class="s2">"${ELASTIC_IP}"</span>
+<span class="nv">CONN_NAME</span><span class="o">=</span><span class="s2">"LSE_Proquote"</span>
+<span class="nv">SECURE_PSK</span><span class="o">=</span><span class="s2">"&lt;your psk&gt;"</span>
+<span class="nv">RIGHT_PUBLIC_IP</span><span class="o">=</span><span class="s2">"&lt;proqute public ip&gt;"</span>
+<span class="nv">RIGHT_SUBNET</span><span class="o">=</span><span class="s2">"&lt;proquote internal ip&gt;"</span>
+
+sudo apt-get install -y openswan
+<span class="c">#sudo ipsec verify  # Throws warnings as EC2 uses NETKEY Ipsec kernel stack</span>
+
+sudo mv /etc/sysctl.conf /etc/sysctl.conf.bak
+
+cat &gt; sysctl.conf <span class="s">&lt;&lt; ENDMSG</span>
+<span class="s">net.ipv4.ip_forward=1</span>
+
+<span class="s">net.ipv4.conf.default.send_redirects = 0</span>
+<span class="s">net.ipv4.conf.all.send_redirects = 0</span>
+<span class="s">net.ipv4.conf.eth0.send_redirects = 0</span>
+
+<span class="s">net.ipv4.conf.all.accept_redirects = 0</span>
+<span class="s">net.ipv4.conf.default.accept_redirects = 0</span>
+<span class="s">net.ipv4.conf.eth0.accept_redirects = 0</span>
+<span class="s">ENDMSG</span>
+
+sudo mv sysctl.conf /etc/sysctl.conf
+sudo sysctl -p /etc/sysctl.conf
+
+<span class="c">#sudo ipsec verify  # should now have no ERRORS</span>
+
+<span class="c"># Main config file</span>
+cat &gt; ipsec.conf <span class="s">&lt;&lt; ENDMSG</span>
+<span class="s">version 2.0</span>
+
+<span class="s">config setup</span>
+<span class="s">    nat_traversal=yes</span>
+<span class="s">    protostack=netkey</span>
+<span class="s">    virtual_private=%v4:10.0.0.0/8,%v4:172.16.0.0/12,%v4:192.168.0.0/16,%v4:!192.168.5.0/24</span>
+<span class="s">    oe=off</span>
+
+<span class="s">include /etc/ipsec.d/*.conf</span>
+<span class="s">ENDMSG</span>
+
+sudo mv ipsec.conf /etc/.
+
+
+<span class="c"># Connection specific config.</span>
+cat &gt; <span class="nv">$CONN_NAME</span>.conf <span class="s">&lt;&lt; ENDMSG</span>
+<span class="s">conn $CONN_NAME</span>
+<span class="s">    type=tunnel</span>
+<span class="s">    authby=secret</span>
+<span class="s">    left=%defaultroute</span>
+<span class="s">    leftsourceip=$SOURCE_IP</span>
+<span class="s">    leftid=$ELASTIC_IP</span>
+<span class="s">    leftnexthop=%defaultroute</span>
+<span class="s">    right=$RIGHT_PUBLIC_IP</span>
+<span class="s">    rightid=$RIGHT_PUBLIC_IP</span>
+<span class="s">    rightsubnet=$RIGHT_SUBNET</span>
+<span class="s">    esp=aes192-sha1</span>
+<span class="s">    keyexchange=ike</span>
+<span class="s">    ike=aes192-sha1</span>
+<span class="s">    salifetime=43200s</span>
+<span class="s">    pfs=yes</span>
+<span class="s">    auto=start</span>
+<span class="s">    dpdaction=restart</span>
+<span class="s">    forceencaps=yes</span>
+<span class="s">ENDMSG</span>
+
+sudo mv <span class="nv">$CONN_NAME</span>.conf /etc/ipsec.d/.
+
+<span class="c"># Ipsec.secrets</span>
+cat &gt; ipsec.secrets <span class="s">&lt;&lt; ENDMSG</span>
+<span class="s">$ELASTIC_IP $RIGHT_PUBLIC_IP: PSK "$SECURE_PSK"</span>
+<span class="s">ENDMSG</span>
+sudo mv ipsec.secrets /etc/.
+</pre></div>
+</div>
+]]></description>
+            <category><![CDATA[ finance ]]></category>
+             <pubDate>Tue, 23 Sep 2014 00:00:00 +0100</pubDate>
+        </item>
+    
         <item>
             <link>http://wachunga.com/2014/06/04/add_flippa_auction_to_calendar.html</link>
             <guid>http://wachunga.com/2014/06/04/add_flippa_auction_to_calendar.html</guid>
