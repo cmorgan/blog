@@ -61,5 +61,5 @@ vim-slime.
 
 .. author:: default
 .. categories:: none
-.. tags:: toosl, clojure
+.. tags:: tools, clojure
 .. comments::
