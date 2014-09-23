@@ -21,7 +21,7 @@
             <link rel="stylesheet" href="_static/main.css" type="text/css">
             <link rel="stylesheet" href="_static/flat.css" type="text/css">
             <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-            <link rel="stylesheet" href="_static/webfont.css" type="text/css">
+            <link rel="stylesheet" href="_static/font-awesome.min.css" type="text/css">
         <!-- Load modernizr and JQuery -->
         <script src="_static/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -31,7 +31,7 @@
         <link rel="next" title="Older" href="page2.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.3.0',
+        VERSION:     '1.4.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -47,16 +47,16 @@
             }
         });
     </script></head>
-    <body>
+    <body role="document">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-      <div id="container"><header>
+      <div id="container"><header role="banner">
             <hgroup>
               <h1><a href="#">Wachunga</a></h1><h2>Notes and ramblings on hacking and finance</h2></hgroup>
           </header>
-      <nav>
+      <nav role="navigation">
             <ul><li class="main-nav">
                   <a href="#">Home</a>
                 </li>
@@ -64,18 +64,17 @@
                   <a href="pages/about.html">About</a>
                 </li>
               </ul>
-          </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
+          </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
             <span>June 04, 2014</span>
         </div>
-        <div class="section" id="add-flippa-auction-to-calendar">
-<h1><a href="2014/06/04/add_flippa_auction_to_calendar.html">Add Flippa auction to calendar</a></h1>
+        <h1><a href="2014/06/04/add_flippa_auction_to_calendar.html">Add Flippa auction to calendar</a></h1>
 <p>This is a nasty hack to add a link to Flippa which will put you on the road to
 adding an event to your Google Calendar at the auction end time. Add the
 following javascript as a Bookmarklet:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">javascript</span><span class="o">:</span><span class="k">void</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span> <span class="s2">&quot;#auctionstatus&quot;</span> <span class="p">).</span><span class="nx">append</span><span class="p">(</span> <span class="s2">&quot;&lt;a href='&quot;</span> <span class="o">+</span> <span class="s2">&quot;http://google.co.uk/search?q=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span><span class="p">(</span><span class="s2">&quot;google calendar add &quot;</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#auctionstatus&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">).</span><span class="nx">substr</span><span class="p">(</span><span class="mi">41</span><span class="p">,</span> <span class="mi">19</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;'&gt;Add to calendar&lt;/a&gt;&quot;</span><span class="p">));</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">javascript</span><span class="o">:</span><span class="k">void</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span> <span class="s2">"#auctionstatus"</span> <span class="p">).</span><span class="nx">append</span><span class="p">(</span> <span class="s2">"&lt;a href='"</span> <span class="o">+</span> <span class="s2">"http://google.co.uk/search?q="</span> <span class="o">+</span> <span class="nb">encodeURI</span><span class="p">(</span><span class="s2">"google calendar add "</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="s2">"#auctionstatus"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"title"</span><span class="p">).</span><span class="nx">substr</span><span class="p">(</span><span class="mi">41</span><span class="p">,</span> <span class="mi">19</span><span class="p">))</span> <span class="o">+</span> <span class="s2">"'&gt;Add to calendar&lt;/a&gt;"</span><span class="p">));</span>
 </pre></div>
 </div>
-</div>
+
         <div class="postmeta">
         <div class="author">
             <span>Posted by Chris Morgan</span>
@@ -87,20 +86,19 @@ following javascript as a Bookmarklet:</p>
         </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>March 10, 2014</span>
         </div>
-        <div class="section" id="time-tracking-tool">
-<h1><a href="2014/03/10/time_tracking_tool.html">Time tracking tool</a></h1>
+        <h1><a href="2014/03/10/time_tracking_tool.html">Time tracking tool</a></h1>
 <p>Another working methodology post, in order to remind me of which tool I used.
 In order to keep track of tasks and time spent when in the commandline (where I
 am most of the time) <a class="reference external" href="https://bitbucket.org/trevor/timebook/wiki/Home">TimeBook</a> is a great tool. It allows
 you do:</p>
-<div class="highlight-python"><div class="highlight"><pre>t in &quot;task i am working on&quot;
+<div class="highlight-python"><div class="highlight"><pre>t in "task i am working on"
 &lt;do some work&gt;
 t out
 </pre></div>
 </div>
 <p>Then there will be an entry in your <cite>timesheet</cite> with today’s date and the time
 spent working on the task.</p>
-</div>
+
         <div class="postmeta">
         <div class="author">
             <span>Posted by Chris Morgan</span>
@@ -116,8 +114,7 @@ spent working on the task.</p>
         </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>March 05, 2014</span>
         </div>
-        <div class="section" id="updating-my-web-design-stack">
-<h1><a href="2014/03/05/updating_my_web_stack.html">Updating my web design stack</a></h1>
+        <h1><a href="2014/03/05/updating_my_web_stack.html">Updating my web design stack</a></h1>
 <p>For data intensive and service related projects I always prefer to use the
 simplicity of <a class="reference external" href="http://www.tornadoweb.org/en/stable">Tornado</a>. Recently I had
 occasion to consider a more classic CMS type of application. I looked at Django
@@ -136,7 +133,7 @@ npm install -g bower
 </pre></div>
 </div>
 <p>Great!</p>
-</div>
+
         <div class="postmeta">
         <div class="author">
             <span>Posted by Chris Morgan</span>
@@ -152,8 +149,7 @@ npm install -g bower
         </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>February 28, 2014</span>
         </div>
-        <div class="section" id="clojure-setup">
-<h1><a href="2014/02/28/clojure_setup.html">Clojure setup</a></h1>
+        <h1><a href="2014/02/28/clojure_setup.html">Clojure setup</a></h1>
 <p>I’m having lots of fun learning Clojure. There are a couple of decent ways to
 be productive in Vim with Clojure, described below:</p>
 <div class="section" id="vim-fireplace">
@@ -225,7 +221,7 @@ order to get contextual help and Vim-slime to execute code. Once i figure out
 how to have a consistent buffer open in vim-fireplace then i guess i’ll ditch
 vim-slime.</p>
 </div>
-</div>
+
         <div class="postmeta">
         <div class="author">
             <span>Posted by Chris Morgan</span>
@@ -234,15 +230,14 @@ vim-slime.</p>
         <div class="tags">
             <span>
                 Tags:
-                <a href="tags/toosl.html">toosl</a>, <a href="tags/clojure.html">clojure</a></span>
+                <a href="tags/tools.html">tools</a>, <a href="tags/clojure.html">clojure</a></span>
         </div>
         <div class="comments">
             <a href="http://wachunga.com/2014/02/28/clojure_setup.html#disqus_thread" data-disqus-identifier="2014/02/28/clojure_setup">Leave a comment</a>
         </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>February 20, 2014</span>
         </div>
-        <div class="section" id="nowcast-this">
-<h1><a href="2014/02/20/nowcast_this.html">Nowcast this</a></h1>
+        <h1><a href="2014/02/20/nowcast_this.html">Nowcast this</a></h1>
 <p>Nowcasting is a technique which has recently gained popularity in economics.
 Essentially low frequency economic variables are foretasted by a series of
 higher frequency variables in state space. The canonical example is that of
@@ -282,7 +277,7 @@ indeed short-term) variables have their forecast updated, which is could be a
 useful signal.</p>
 <p>A <a class="reference external" href="http://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1564.pdf">paper</a> by Marta Bańbura, Domenico Giannone, Michele Modugno and Lucrezia
 Reichlin reviewing the approaches can be found on the ECB website.</p>
-</div>
+
         <div class="postmeta">
         <div class="author">
             <span>Posted by Chris Morgan</span>
@@ -298,8 +293,7 @@ Reichlin reviewing the approaches can be found on the ECB website.</p>
         </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>February 18, 2014</span>
         </div>
-        <div class="section" id="hal-r-varian">
-<h1><a href="2014/02/18/hal_r_varian.html">Hal R. Varian</a></h1>
+        <h1><a href="2014/02/18/hal_r_varian.html">Hal R. Varian</a></h1>
 <p>In my quest to keep upto date with the big ideas in econometrics and finance I
 happened upon Hal R. Varian. Hal is both a professor at UC Berkley and also
 Chief Economist at Google, a couple of impressive positions held simultaneously
@@ -319,7 +313,7 @@ a system where terms correlated to an economic variable e.g. claims for
 unemployment, are discovered with Google Correlate and then Google Trends
 data for those terms is analysed and ranked in terms of predictability using a
 Markov chain Monte Carlo (MCMC) algorithm - interesting!</p>
-</div>
+
         <div class="postmeta">
         <div class="author">
             <span>Posted by Chris Morgan</span>
@@ -335,8 +329,7 @@ Markov chain Monte Carlo (MCMC) algorithm - interesting!</p>
         </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>February 06, 2014</span>
         </div>
-        <div class="section" id="beige-book-sentiment">
-<h1><a href="2014/02/06/beige_book_sentiment.html">Beige Book Sentiment</a></h1>
+        <h1><a href="2014/02/06/beige_book_sentiment.html">Beige Book Sentiment</a></h1>
 <div class="figure align-center">
 <img alt="../../../_images/beige_book_word_cloud.png" src="_images/beige_book_word_cloud.png"/>
 <p class="caption">Word cloud showing relative frequencies of words in all Beige Books since
@@ -420,7 +413,7 @@ Finance 6 (3) (2005) 144–160.</p>
 <p>[3] Johan Bollen, Huina Mao, Xiao-Jun Zeng: Twitter mood predicts the stock market.
 J. Comput. Science 2(1): 1-8 (2011)</p>
 </div>
-</div>
+
         <div class="postmeta">
         <div class="author">
             <span>Posted by Chris Morgan</span>
@@ -436,8 +429,7 @@ J. Comput. Science 2(1): 1-8 (2011)</p>
         </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>January 13, 2014</span>
         </div>
-        <div class="section" id="remember-vim-folding">
-<h1><a href="2014/01/13/remember_vim_folding.html">Remember Vim folding</a></h1>
+        <h1><a href="2014/01/13/remember_vim_folding.html">Remember Vim folding</a></h1>
 <table border="1" class="docutils">
 <colgroup>
 <col width="11%"/>
@@ -476,16 +468,16 @@ J. Comput. Science 2(1): 1-8 (2011)</p>
 </tbody>
 </table>
 <p>Then i set the following in .vimrc:</p>
-<div class="highlight-python"><div class="highlight"><pre>&quot; folding
-&quot; toggle open fold
+<div class="highlight-python"><div class="highlight"><pre>" folding
+" toggle open fold
 nnoremap f zA
-&quot; open all
+" open all
 nnoremap F zR
-&quot; clos all
+" clos all
 nnoremap &lt;C-f&gt; zM
 </pre></div>
 </div>
-</div>
+
         <div class="postmeta">
         <div class="author">
             <span>Posted by Chris Morgan</span>
@@ -497,8 +489,7 @@ nnoremap &lt;C-f&gt; zM
         </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>January 05, 2014</span>
         </div>
-        <div class="section" id="being-even-more-productive-with-ipython-notebooks">
-<h1><a href="2014/01/05/being_productive_with_ipython_notebooks.html">Being even more productive with IPython notebooks</a></h1>
+        <h1><a href="2014/01/05/being_productive_with_ipython_notebooks.html">Being even more productive with IPython notebooks</a></h1>
 <p>IPython notebooks are an awesome tool for exploring data. Currently there are a
 few issues with the software which the community are working through.</p>
 <div class="section" id="slides">
@@ -520,8 +511,8 @@ correctly:</p>
 <div class="section" id="git">
 <h2>Git</h2>
 <p>The JSON format of IPython notebooks is great, however there is no need to save Base64 encoded binary data in Git. We can strip out the binary blobs with Git filters.  Add the following somewhere on your path: <a class="reference external" href="https://github.com/cfriedline/ipynb_template/blob/master/nbstripout">https://github.com/cfriedline/ipynb_template/blob/master/nbstripout</a>, then add the following in <span class="docutils literal"><span class="pre">.git/config</span></span>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">[</span>filter <span class="s2">&quot;stripoutput&quot;</span><span class="o">]</span>
-    <span class="nv">clean</span> <span class="o">=</span> <span class="s2">&quot;/path/to/nbstripout&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="o">[</span>filter <span class="s2">"stripoutput"</span><span class="o">]</span>
+    <span class="nv">clean</span> <span class="o">=</span> <span class="s2">"/path/to/nbstripout"</span>
 </pre></div>
 </div>
 <p>And a <span class="docutils literal"><span class="pre">.gitattributes</span></span> file in your project root with the following contents:</p>
@@ -530,7 +521,7 @@ correctly:</p>
 </div>
 <p>You will not notice any changes to your local <span class="docutils literal"><span class="pre">.ipynb</span></span> file when you commit (as the content is being filtered, not replaced as a pre-commit hook would do). Once committed, delete the file and checkout again and you will see a <span class="docutils literal"><span class="pre">.ipynb</span></span> file sans output. Also the numbering of cells will start continuously from 1 - great!</p>
 </div>
-</div>
+
         <div class="postmeta">
         <div class="author">
             <span>Posted by Chris Morgan</span>
@@ -546,8 +537,7 @@ correctly:</p>
         </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>January 03, 2014</span>
         </div>
-        <div class="section" id="setting-up-matlab-contexts">
-<h1><a href="2014/01/03/setup_matlab.html">Setting up MATLAB contexts</a></h1>
+        <h1><a href="2014/01/03/setup_matlab.html">Setting up MATLAB contexts</a></h1>
 <p>If you are forced to use MATLAB (here’s a whole blog devoted to the topic of
 why not to use it <a class="reference external" href="http://abandonmatlab.wordpress.com">http://abandonmatlab.wordpress.com/</a>) the following advice
 maybe useful for easily managing your path and hence creating contexts of work.</p>
@@ -577,7 +567,7 @@ work in, making changing contexts as easy as:</p>
 <p>Whithin each context <span class="docutils literal"><span class="pre">path</span></span> file if you also call the <span class="docutils literal"><span class="pre">set_vars</span></span> script,
 this allows <span class="docutils literal"><span class="pre">set_vars</span></span> to contain useful variables e.g. paths to output
 directories and the like.</p>
-</div>
+
         <div class="postmeta">
         <div class="author">
             <span>Posted by Chris Morgan</span>
@@ -621,7 +611,7 @@ directories and the like.</p>
 </div>
 </section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
-        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2014, Chris Morgan. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+        <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2014, Chris Morgan. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
 
       </div> <!--! end of #container --><script type="text/javascript">    var disqus_shortname = "Wachunga";    disqus_count();</script><!--[if lt IE 7 ]>
           <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
