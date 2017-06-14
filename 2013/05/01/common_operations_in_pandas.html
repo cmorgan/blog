@@ -13,7 +13,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="description" content="Notes and ramblings on hacking and finance">
+        <meta name="description" content="Quantitative Development Consultancy">
         <meta name="viewport" content="width=device-width">
         <title>Common operations in Pandas &mdash; Wachunga</title>
             <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
@@ -28,15 +28,15 @@
         <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="../../../_static/plugins.js"></script>
         <script src="../../../_static/main.js"></script>
-        <link rel="next" title="IPython notes" href="../../04/12/ipython_notes.html" /><link rel="prev" title="Setting up MATLAB contexts" href="../../../2014/01/03/setup_matlab.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+        <link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="IPython notes" href="../../04/12/ipython_notes.html" /><link rel="prev" title="Setting up MATLAB contexts" href="../../../2014/01/03/setup_matlab.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '1.4.2',
+        VERSION:     '1.6.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
-    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="../../../_static/disqus.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="../../../_static/disqus.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -56,14 +56,14 @@
 
       <div id="container"><header role="banner">
             <hgroup>
-              <h1><a href="../../../index.html">Wachunga</a></h1><h2>Notes and ramblings on hacking and finance</h2></hgroup>
+              <h1><a href="../../../index.html">Wachunga</a></h1><h2>Quantitative Development Consultancy</h2></hgroup>
           </header>
       <nav role="navigation">
             <ul><li class="main-nav">
                   <a href="../../../index.html">Home</a>
                 </li>
               <li class="main-nav">
-                  <a href="../../../pages/about.html">About</a>
+                  <a href="../../../pages/contact.html">Contact</a>
                 </li>
               </ul>
           </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
@@ -71,7 +71,7 @@
         </div>
     <div class="section" id="common-operations-in-pandas">
 <h1>Common operations in Pandas</h1>
-<p>This is another &#8220;do not forget&#8221; post.</p>
+<p>This is another “do not forget” post.</p>
 <p>If you munge data in Python then you really should be using <a class="reference external" href="http://pandas.pydata.org/">Pandas</a>. These are some notes about common operations.</p>
 <div class="section" id="hierachical-index">
 <h2>Hierachical index</h2>
@@ -86,7 +86,7 @@
 <col width="17%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">&nbsp;</th>
+<tr class="row-odd"><th class="head">&#160;</th>
 <th class="head">Bid</th>
 <th class="head">Mid</th>
 <th class="head">Offer</th>
@@ -138,8 +138,8 @@
 <col width="16%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">&nbsp;</th>
-<th class="head">&nbsp;</th>
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">&#160;</th>
 <th class="head">Bid</th>
 <th class="head">Mid</th>
 <th class="head">Offer</th>
@@ -148,9 +148,9 @@
 <tbody valign="top">
 <tr class="row-even"><td>index</td>
 <td>Variable</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>1994-01-03 16:00:00</td>
 <td>ARS</td>
@@ -158,25 +158,25 @@
 <td>0.9981</td>
 <td>0.9981</td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td>ATS</td>
 <td>12.2190</td>
 <td>12.2215</td>
 <td>12.2240</td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
 <td>AUD</td>
 <td>0.6835</td>
 <td>0.6838</td>
 <td>0.6840</td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td>BDT</td>
 <td>39.0000</td>
 <td>39.0000</td>
 <td>39.0000</td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
 <td>BEF</td>
 <td>36.2060</td>
 <td>36.2425</td>
@@ -186,7 +186,7 @@
 </table>
 </div></blockquote>
 <p>This can be done for a pandas.DataFrame <span class="docutils literal"><span class="pre">df</span></span> like so</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s">&#39;index&#39;</span><span class="p">,</span> <span class="s">&#39;Variable&#39;</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="s1">&#39;Variable&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -195,14 +195,14 @@
 <p>Consider again Table A above loaded as <span class="docutils literal"><span class="pre">df</span></span>, if we wish to filter out a
 subset of values in the <span class="docutils literal"><span class="pre">Variable</span></span> column, and consider the <span class="docutils literal"><span class="pre">Mid</span></span> values
 only for then we can do the following to have a continuous time series:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">g10_set</span> <span class="o">=</span> <span class="p">[</span>
-<span class="s">&#39;USD&#39;</span><span class="p">,</span> <span class="s">&#39;EUR&#39;</span><span class="p">,</span> <span class="s">&#39;JPY&#39;</span><span class="p">,</span> <span class="s">&#39;CHF&#39;</span><span class="p">,</span> <span class="s">&#39;GBP&#39;</span><span class="p">,</span> <span class="s">&#39;AUD&#39;</span><span class="p">,</span> <span class="s">&#39;CAD&#39;</span><span class="p">,</span> <span class="s">&#39;SEK&#39;</span><span class="p">,</span>
-<span class="s">&#39;NOK&#39;</span><span class="p">,</span> <span class="s">&#39;NZD&#39;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">g10_set</span> <span class="o">=</span> <span class="p">[</span>
+<span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="s1">&#39;EUR&#39;</span><span class="p">,</span> <span class="s1">&#39;JPY&#39;</span><span class="p">,</span> <span class="s1">&#39;CHF&#39;</span><span class="p">,</span> <span class="s1">&#39;GBP&#39;</span><span class="p">,</span> <span class="s1">&#39;AUD&#39;</span><span class="p">,</span> <span class="s1">&#39;CAD&#39;</span><span class="p">,</span> <span class="s1">&#39;SEK&#39;</span><span class="p">,</span>
+<span class="s1">&#39;NOK&#39;</span><span class="p">,</span> <span class="s1">&#39;NZD&#39;</span>
 <span class="p">]</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;Variable&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">g10_set</span><span class="p">)]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">g10_set</span><span class="p">)]</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span>
-    <span class="n">index</span><span class="o">=</span><span class="s">&#39;index&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">&#39;Variable&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">&#39;Mid&#39;</span>
+    <span class="n">index</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Mid&#39;</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -229,19 +229,19 @@ only for then we can do the following to have a continuous time series:</p>
 <th class="head">GBP</th>
 <th class="head">JPY</th>
 <th class="head">NOK</th>
-<th class="head">&nbsp;</th>
+<th class="head">&#160;</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>index</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>1994-01-03 16:00:00</td>
 <td>0.6838</td>
@@ -251,7 +251,7 @@ only for then we can do the following to have a continuous time series:</p>
 <td>1.4805</td>
 <td>112.395</td>
 <td>7.5251</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-even"><td>1994-01-04 16:00:00</td>
 <td>0.6848</td>
@@ -261,7 +261,7 @@ only for then we can do the following to have a continuous time series:</p>
 <td>1.4819</td>
 <td>113.155</td>
 <td>7.5259</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>1994-01-05 16:00:00</td>
 <td>0.6873</td>
@@ -271,7 +271,7 @@ only for then we can do the following to have a continuous time series:</p>
 <td>1.4864</td>
 <td>112.760</td>
 <td>7.5020</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-even"><td>1994-01-06 16:00:00</td>
 <td>0.6843</td>
@@ -281,7 +281,7 @@ only for then we can do the following to have a continuous time series:</p>
 <td>1.4880</td>
 <td>112.555</td>
 <td>7.4903</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>1994-01-07 16:00:00</td>
 <td>0.6868</td>
@@ -291,7 +291,7 @@ only for then we can do the following to have a continuous time series:</p>
 <td>1.4905</td>
 <td>111.825</td>
 <td>7.4865</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -301,16 +301,16 @@ only for then we can do the following to have a continuous time series:</p>
 <h2>Working with the index</h2>
 <p>To extract indexed data points which are common to df1 from df2, you can do the
 following:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">df2</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="n">df1</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="n">df1</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>To extract ranges of index from df2, the DataFrame may be sliced:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># extract ranges of index</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># extract ranges of index</span>
 <span class="n">df2</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="n">df1</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">df1</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
 
-<span class="c"># and similarly specific values may also be accesed, pandas will coerce</span>
-<span class="c"># these to pd.Timestamp</span>
-<span class="n">df2</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="s">&#39;2013-12-31 16:00:00&#39;</span><span class="p">]</span>
+<span class="c1"># and similarly specific values may also be accesed, pandas will coerce</span>
+<span class="c1"># these to pd.Timestamp</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="s1">&#39;2013-12-31 16:00:00&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -364,7 +364,7 @@ which are nonzero.</li>
 </div>
 </section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
-        <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2014, Chris Morgan. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+        <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2017, Wachunga Ltd. </footer></div> <!-- footer-container -->
 
       </div> <!--! end of #container --><!--[if lt IE 7 ]>
           <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
