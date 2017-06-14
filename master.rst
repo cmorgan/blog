@@ -17,5 +17,4 @@ Sitemap
    2014/01/03/setup_matlab
    2013/05/01/common_operations_in_pandas
    2013/04/12/ipython_notes
-   pages/about
-
+   pages/contact

@@ -12,6 +12,7 @@ project = 'Wachunga'
 
 # Change this to the tagline of your blog
 tagline = 'Notes and ramblings on hacking and finance'
+tagline = 'Quantitative Development Consultancy'
 
 # Change this to the description of your blog
 description = tagline
@@ -19,8 +20,9 @@ description = tagline
 # Change this to your name
 author = 'Chris Morgan'
 
+show_sphinx = False
 # Change this to your copyright string
-copyright = '2014, ' + author
+copyright = '2017, Wachunga Ltd'
 
 # Change this to your blog root URL (required for RSS feed)
 website = 'http://wachunga.com'
