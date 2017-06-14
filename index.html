@@ -13,7 +13,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="description" content="Notes and ramblings on hacking and finance">
+        <meta name="description" content="Quantitative Development Consultancy">
         <meta name="viewport" content="width=device-width">
         <title>Home &mdash; Wachunga</title>
             <link rel="stylesheet" href="_static/normalize.css" type="text/css">
@@ -28,15 +28,15 @@
         <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="_static/plugins.js"></script>
         <script src="_static/main.js"></script>
-        <link rel="next" title="Older" href="page2.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+        <link rel="search" title="Search" href="search.html" /><link rel="next" title="Older" href="page2.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.4.2',
+        VERSION:     '1.6.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
-    </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="_static/disqus.js"></script><script type="text/javascript" src="_static/google_analytics.js"></script>
+    </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="_static/disqus.js"></script><script type="text/javascript" src="_static/google_analytics.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -56,14 +56,14 @@
 
       <div id="container"><header role="banner">
             <hgroup>
-              <h1><a href="#">Wachunga</a></h1><h2>Notes and ramblings on hacking and finance</h2></hgroup>
+              <h1><a href="#">Wachunga</a></h1><h2>Quantitative Development Consultancy</h2></hgroup>
           </header>
       <nav role="navigation">
             <ul><li class="main-nav">
                   <a href="#">Home</a>
                 </li>
               <li class="main-nav">
-                  <a href="pages/about.html">About</a>
+                  <a href="pages/contact.html">Contact</a>
                 </li>
               </ul>
           </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
@@ -82,21 +82,21 @@ U2.6.41-4-gd5ce941/K3.2.0-64-virtual from source, check that this Git hash has
 been released into your version of OpenSwan.</p>
 <p>Given a valid OpenSwan install on a debian based Linux, the following script
 will setup the OpenSwan connection initiated from EC2.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># following https://gist.github.com/winhamwr/2871257</span>
-<span class="c">#</span>
-<span class="c"># EC2 security groups: open UDP access on 500 and 4500</span>
-<span class="c">#</span>
-<span class="c"># IPSec version used with success: Linux Openswan U2.6.41-4-gd5ce941/K3.2.0-64-virtual (netkey)</span>
+<div class="highlight-bash"><div class="highlight"><pre><span/><span class="c1"># following https://gist.github.com/winhamwr/2871257</span>
+<span class="c1">#</span>
+<span class="c1"># EC2 security groups: open UDP access on 500 and 4500</span>
+<span class="c1">#</span>
+<span class="c1"># IPSec version used with success: Linux Openswan U2.6.41-4-gd5ce941/K3.2.0-64-virtual (netkey)</span>
 
 <span class="nv">ELASTIC_IP</span><span class="o">=</span><span class="s2">"&lt;your ip&gt;"</span>
-<span class="nv">SOURCE_IP</span><span class="o">=</span><span class="s2">"${ELASTIC_IP}"</span>
+<span class="nv">SOURCE_IP</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">ELASTIC_IP</span><span class="si">}</span><span class="s2">"</span>
 <span class="nv">CONN_NAME</span><span class="o">=</span><span class="s2">"LSE_Proquote"</span>
 <span class="nv">SECURE_PSK</span><span class="o">=</span><span class="s2">"&lt;your psk&gt;"</span>
 <span class="nv">RIGHT_PUBLIC_IP</span><span class="o">=</span><span class="s2">"&lt;proqute public ip&gt;"</span>
 <span class="nv">RIGHT_SUBNET</span><span class="o">=</span><span class="s2">"&lt;proquote internal ip&gt;"</span>
 
 sudo apt-get install -y openswan
-<span class="c">#sudo ipsec verify  # Throws warnings as EC2 uses NETKEY Ipsec kernel stack</span>
+<span class="c1">#sudo ipsec verify  # Throws warnings as EC2 uses NETKEY Ipsec kernel stack</span>
 
 sudo mv /etc/sysctl.conf /etc/sysctl.conf.bak
 
@@ -115,9 +115,9 @@ cat &gt; sysctl.conf <span class="s">&lt;&lt; ENDMSG</span>
 sudo mv sysctl.conf /etc/sysctl.conf
 sudo sysctl -p /etc/sysctl.conf
 
-<span class="c">#sudo ipsec verify  # should now have no ERRORS</span>
+<span class="c1">#sudo ipsec verify  # should now have no ERRORS</span>
 
-<span class="c"># Main config file</span>
+<span class="c1"># Main config file</span>
 cat &gt; ipsec.conf <span class="s">&lt;&lt; ENDMSG</span>
 <span class="s">version 2.0</span>
 
@@ -133,7 +133,7 @@ cat &gt; ipsec.conf <span class="s">&lt;&lt; ENDMSG</span>
 sudo mv ipsec.conf /etc/.
 
 
-<span class="c"># Connection specific config.</span>
+<span class="c1"># Connection specific config.</span>
 cat &gt; <span class="nv">$CONN_NAME</span>.conf <span class="s">&lt;&lt; ENDMSG</span>
 <span class="s">conn $CONN_NAME</span>
 <span class="s">    type=tunnel</span>
@@ -157,7 +157,7 @@ cat &gt; <span class="nv">$CONN_NAME</span>.conf <span class="s">&lt;&lt; ENDMSG
 
 sudo mv <span class="nv">$CONN_NAME</span>.conf /etc/ipsec.d/.
 
-<span class="c"># Ipsec.secrets</span>
+<span class="c1"># Ipsec.secrets</span>
 cat &gt; ipsec.secrets <span class="s">&lt;&lt; ENDMSG</span>
 <span class="s">$ELASTIC_IP $RIGHT_PUBLIC_IP: PSK "$SECURE_PSK"</span>
 <span class="s">ENDMSG</span>
@@ -188,7 +188,7 @@ sudo mv ipsec.secrets /etc/.
 <p>This is a nasty hack to add a link to Flippa which will put you on the road to
 adding an event to your Google Calendar at the auction end time. Add the
 following javascript as a Bookmarklet:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">javascript</span><span class="o">:</span><span class="k">void</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span> <span class="s2">"#auctionstatus"</span> <span class="p">).</span><span class="nx">append</span><span class="p">(</span> <span class="s2">"&lt;a href='"</span> <span class="o">+</span> <span class="s2">"http://google.co.uk/search?q="</span> <span class="o">+</span> <span class="nb">encodeURI</span><span class="p">(</span><span class="s2">"google calendar add "</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="s2">"#auctionstatus"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"title"</span><span class="p">).</span><span class="nx">substr</span><span class="p">(</span><span class="mi">41</span><span class="p">,</span> <span class="mi">19</span><span class="p">))</span> <span class="o">+</span> <span class="s2">"'&gt;Add to calendar&lt;/a&gt;"</span><span class="p">));</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span/><span class="nx">javascript</span><span class="o">:</span><span class="k">void</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span> <span class="s2">"#auctionstatus"</span> <span class="p">).</span><span class="nx">append</span><span class="p">(</span> <span class="s2">"&lt;a href='"</span> <span class="o">+</span> <span class="s2">"http://google.co.uk/search?q="</span> <span class="o">+</span> <span class="nb">encodeURI</span><span class="p">(</span><span class="s2">"google calendar add "</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="s2">"#auctionstatus"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"title"</span><span class="p">).</span><span class="nx">substr</span><span class="p">(</span><span class="mi">41</span><span class="p">,</span> <span class="mi">19</span><span class="p">))</span> <span class="o">+</span> <span class="s2">"'&gt;Add to calendar&lt;/a&gt;"</span><span class="p">));</span>
 </pre></div>
 </div>
 
@@ -208,9 +208,9 @@ following javascript as a Bookmarklet:</p>
 In order to keep track of tasks and time spent when in the commandline (where I
 am most of the time) <a class="reference external" href="https://bitbucket.org/trevor/timebook/wiki/Home">TimeBook</a> is a great tool. It allows
 you do:</p>
-<div class="highlight-python"><div class="highlight"><pre>t in "task i am working on"
-&lt;do some work&gt;
-t out
+<div class="highlight-default"><div class="highlight"><pre><span/><span class="n">t</span> <span class="ow">in</span> <span class="s2">"task i am working on"</span>
+<span class="o">&lt;</span><span class="n">do</span> <span class="n">some</span> <span class="n">work</span><span class="o">&gt;</span>
+<span class="n">t</span> <span class="n">out</span>
 </pre></div>
 </div>
 <p>Then there will be an entry in your <cite>timesheet</cite> with today’s date and the time
@@ -233,19 +233,19 @@ spent working on the task.</p>
         </div>
         <h1><a href="2014/03/05/updating_my_web_stack.html">Updating my web design stack</a></h1>
 <p>For data intensive and service related projects I always prefer to use the
-simplicity of <a class="reference external" href="http://www.tornadoweb.org/en/stable">Tornado</a>. Recently I had
+simplicity of <a class="reference external" href="http://www.tornadoweb.org/en/stable/">Tornado</a>. Recently I had
 occasion to consider a more classic CMS type of application. I looked at Django
 a number of years ago and was largely unimpressed, probably because the need at
 the time was not for a CMS platform and the design of the admin interface
 seemed a bit late 90’s.</p>
 <p>My opinion has changed however with the <a class="reference external" href="https://github.com/torchbox/wagtail">Wagtail</a> project from Torchbox. Very nice design
 and some of the key Django apps, like South, bundled in.</p>
-<p>Also, I have been impressed with the <a class="reference external" href="http://bower.io">Bower</a> project -
-which provides a package manager for front end components on <a class="reference external" href="http://nodejs.org">Node</a>.</p>
+<p>Also, I have been impressed with the <a class="reference external" href="http://bower.io/">Bower</a> project -
+which provides a package manager for front end components on <a class="reference external" href="http://nodejs.org/">Node</a>.</p>
 <p>Anyway, to get these fancy Javascript tools working in a Python virtualenv do
 the following from within a virtualenv:</p>
-<div class="highlight-bash"><div class="highlight"><pre>pip install nodeenv
-nodeenv --python-virtualenv  <span class="c"># activate nodeenv in the current virtualenv</span>
+<div class="highlight-bash"><div class="highlight"><pre><span/>pip install nodeenv
+nodeenv --python-virtualenv  <span class="c1"># activate nodeenv in the current virtualenv</span>
 npm install -g bower
 </pre></div>
 </div>
@@ -306,7 +306,7 @@ always open as the popping open of the buffer grows old quickly.</p>
 <div class="section" id="vim-slime">
 <h2>Vim-slime</h2>
 <p>A solution which uses the excellent Tmux is <a class="reference external" href="https://github.com/jpalardy/vim-slime">vim-slime</a>, a nice setup is described in this
-<a class="reference external" href="http://michaelalynmiller.com/blog/2013/02/27/vim-tmux-clojure">blog</a>. It
+<a class="reference external" href="http://michaelalynmiller.com/blog/2013/02/27/vim-tmux-clojure/">blog</a>. It
 works with any REPL. In brief you open a Clojure REPL in a Tmux window and tell
 Vim to send highlighted lines. It’s good as the REPL window remains open
 showing the command execution history.</p>
@@ -420,7 +420,7 @@ particularly enjoyed his <a class="reference external" href="http://people.ischo
 which essentially espouses economists to not only analyse the electronic data
 that pretty much any firm is amassing but also to perform experiments within
 the bounds of the collection system, giving rise to similar advances as have
-been gained from similar methods applied to e-marketing (see <a class="reference external" href="http://www.kalzumeus.com/greatest-hits">Patrick McKenzie’s
+been gained from similar methods applied to e-marketing (see <a class="reference external" href="http://www.kalzumeus.com/greatest-hits/">Patrick McKenzie’s
 essays</a> for more).</p>
 <p>Another paper of note was <a class="reference external" href="http://people.ischool.berkeley.edu/~hal/Papers/2013/pred-present-with-bsts.pdf">Predicting the Present with Bayesian Strucural Time
 Series</a>
@@ -447,10 +447,10 @@ Markov chain Monte Carlo (MCMC) algorithm - interesting!</p>
             <span>February 06, 2014</span>
         </div>
         <h1><a href="2014/02/06/beige_book_sentiment.html">Beige Book Sentiment</a></h1>
-<div class="figure align-center">
+<div class="figure align-center" id="id1">
 <img alt="../../../_images/beige_book_word_cloud.png" src="_images/beige_book_word_cloud.png"/>
-<p class="caption">Word cloud showing relative frequencies of words in all Beige Books since
-1970</p>
+<p class="caption"><span class="caption-text">Word cloud showing relative frequencies of words in all Beige Books since
+1970</span></p>
 </div>
 <div class="section" id="why">
 <h2>Why?</h2>
@@ -466,7 +466,7 @@ uncorrelated with traditional quantitative signals [2].</p>
 <h2>Commercial Products and Funds</h2>
 <p>There are a number of commercial products and funds already providing or
 exploiting sentiment based signals.</p>
-<p>Thompson Reuters recently acquired <a class="reference external" href="http://www.lexalytics.com">Lexalytics</a>
+<p>Thompson Reuters recently acquired <a class="reference external" href="http://www.lexalytics.com/">Lexalytics</a>
 who provide sentiment indicators in machine readable format. Global sentiment
 indicators are also provided by <a class="reference external" href="https://ww.marketpsych.com">MarketPsych</a>, a
 spin off company from the now closed MarketPsych Captial fund setup by <a class="reference external" href="http://www.richard.peterson.net">Richard
@@ -585,13 +585,13 @@ J. Comput. Science 2(1): 1-8 (2011)</p>
 </tbody>
 </table>
 <p>Then i set the following in .vimrc:</p>
-<div class="highlight-python"><div class="highlight"><pre>" folding
-" toggle open fold
-nnoremap f zA
-" open all
-nnoremap F zR
-" clos all
-nnoremap &lt;C-f&gt; zM
+<div class="highlight-default"><div class="highlight"><pre><span/><span class="s2">" folding</span>
+<span class="s2">" toggle open fold</span>
+<span class="n">nnoremap</span> <span class="n">f</span> <span class="n">zA</span>
+<span class="s2">" open all</span>
+<span class="n">nnoremap</span> <span class="n">F</span> <span class="n">zR</span>
+<span class="s2">" clos all</span>
+<span class="n">nnoremap</span> <span class="o">&lt;</span><span class="n">C</span><span class="o">-</span><span class="n">f</span><span class="o">&gt;</span> <span class="n">zM</span>
 </pre></div>
 </div>
 
@@ -613,7 +613,7 @@ few issues with the software which the community are working through.</p>
 <h2>Slides</h2>
 <p>Particularly useful is the ability to be able to create slides from your
 notebooks using reveal.js:</p>
-<div class="highlight-bash"><div class="highlight"><pre>python3 nbconvert --to slides BeigeBook.ipynb --post serve
+<div class="highlight-bash"><div class="highlight"><pre><span/>python3 nbconvert --to slides BeigeBook.ipynb --post serve
 </pre></div>
 </div>
 <p>But we need to follow these steps in order for the formatting to work
@@ -628,12 +628,12 @@ correctly:</p>
 <div class="section" id="git">
 <h2>Git</h2>
 <p>The JSON format of IPython notebooks is great, however there is no need to save Base64 encoded binary data in Git. We can strip out the binary blobs with Git filters.  Add the following somewhere on your path: <a class="reference external" href="https://github.com/cfriedline/ipynb_template/blob/master/nbstripout">https://github.com/cfriedline/ipynb_template/blob/master/nbstripout</a>, then add the following in <span class="docutils literal"><span class="pre">.git/config</span></span>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">[</span>filter <span class="s2">"stripoutput"</span><span class="o">]</span>
+<div class="highlight-bash"><div class="highlight"><pre><span/><span class="o">[</span>filter <span class="s2">"stripoutput"</span><span class="o">]</span>
     <span class="nv">clean</span> <span class="o">=</span> <span class="s2">"/path/to/nbstripout"</span>
 </pre></div>
 </div>
 <p>And a <span class="docutils literal"><span class="pre">.gitattributes</span></span> file in your project root with the following contents:</p>
-<div class="highlight-bash"><div class="highlight"><pre>*.ipynb <span class="nv">filter</span><span class="o">=</span>stripoutput
+<div class="highlight-bash"><div class="highlight"><pre><span/>*.ipynb <span class="nv">filter</span><span class="o">=</span>stripoutput
 </pre></div>
 </div>
 <p>You will not notice any changes to your local <span class="docutils literal"><span class="pre">.ipynb</span></span> file when you commit (as the content is being filtered, not replaced as a pre-commit hook would do). Once committed, delete the file and checkout again and you will see a <span class="docutils literal"><span class="pre">.ipynb</span></span> file sans output. Also the numbering of cells will start continuously from 1 - great!</p>
@@ -682,7 +682,7 @@ correctly:</p>
 </div>
 </section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
-        <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2014, Chris Morgan. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+        <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2017, Wachunga Ltd. </footer></div> <!-- footer-container -->
 
       </div> <!--! end of #container --><script type="text/javascript">    var disqus_shortname = "Wachunga";    disqus_count();</script><!--[if lt IE 7 ]>
           <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
