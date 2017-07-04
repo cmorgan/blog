@@ -1,7 +1,7 @@
 Contact
 =======
 
-Wachunga offer quantiative development solutions and full end to end
+Wachunga offer quantitative development solutions and full end to end
 application development with particular expertise in data science and model
 development.
 
